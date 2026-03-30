@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cuqshro0bju6h"]
+
+[ext_resource type="Script" uid="uid://bqhggp7l21gjy" path="res://escenes/InGame/bala.gd" id="1_5ml4n"]
+[ext_resource type="Texture2D" uid="uid://c2cjqxlaq6oyi" path="res://sprites/bala.png" id="1_wqxej"]
+
+[sub_resource type="Curve" id="Curve_nhao1"]
+_data = [Vector2(0, 0.7201861), 0.0, 0.0, 0, 0, Vector2(1, 0.107620716), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_muof0"]
+curve = SubResource("Curve_nhao1")
+
+[sub_resource type="Curve" id="Curve_fkgo6"]
+_data = [Vector2(0, 0.3042466), 0.0, 0.0, 0, 0, Vector2(0.98154986, 0.08493304), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8276h"]
+curve = SubResource("Curve_fkgo6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fys8n"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_8276h")
+alpha_curve = SubResource("CurveTexture_muof0")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etrv2"]
+radius = 5.0
+
+[node name="Bala" type="Area2D" unique_id=1483595894]
+collision_mask = 0
+script = ExtResource("1_5ml4n")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=427375584]
+texture = ExtResource("1_wqxej")
+lifetime = 0.11
+process_material = SubResource("ParticleProcessMaterial_fys8n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1408600304]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_wqxej")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1357216593]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1925808993]
+shape = SubResource("CircleShape2D_etrv2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

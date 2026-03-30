@@ -1,0 +1,409 @@
+[gd_scene load_steps=31 format=3 uid="uid://bkpcenigritt0"]
+
+[sub_resource type="Curve" id="Curve_hj2jy"]
+_data = [Vector2(0.126667, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.206667, 0.362637), 0.0, 0.0, 0, 0, Vector2(0.333333, 0.758242), 0.0, 0.0, 0, 0, Vector2(0.366667, 0.252747), 0.0, 0.0, 0, 0, Vector2(0.406667, 0.549451), 0.0, 0.0, 0, 0, Vector2(0.6, 0.824176), 0.0, 0.0, 0, 0, Vector2(0.713333, 0.538462), 0.0, 0.0, 0, 0, Vector2(0.78, 0.813187), 0.0, 0.0, 0, 0, Vector2(0.84, 0.67033), 0.0, 0.0, 0, 0, Vector2(0.94, 0.791209), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_wubb8"]
+curve = SubResource("Curve_hj2jy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mt2xm"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 220, 1)
+spread = 5.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_wubb8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g2pi7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.947162, 0, 0.0320439, 1)
+alpha_curve = SubResource("CurveTexture_wubb8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x0q7h"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0.489621, 0.969374, 1)
+alpha_curve = SubResource("CurveTexture_wubb8")
+
+[sub_resource type="Curve" id="Curve_k7yu7"]
+_data = [Vector2(0.0666667, 0.703297), 0.0, 0.0, 0, 0, Vector2(0.126667, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.18, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.226667, 0.615385), 0.0, 0.0, 0, 0, Vector2(0.286667, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.36, 0.43956), 0.0, 0.0, 0, 0, Vector2(0.413333, 0.637363), 0.0, 0.0, 0, 0, Vector2(0.466667, 0.846154), 0.0, 0.0, 0, 0, Vector2(0.54, 0.692308), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_qbd7q"]
+curve = SubResource("Curve_k7yu7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_44qum"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+alpha_curve = SubResource("CurveTexture_qbd7q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qclkp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1, 0.381825, 0.273471, 1)
+alpha_curve = SubResource("CurveTexture_qbd7q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_irkxs"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1.34766e-06, 0.37512, 0.970507, 1)
+alpha_curve = SubResource("CurveTexture_qbd7q")
+
+[sub_resource type="Curve" id="Curve_gxmqf"]
+_data = [Vector2(0, 0.923077), 0.0, 0.0, 0, 0, Vector2(0.0133333, 0.604396), 0.0, 0.0, 0, 0, Vector2(0.0533333, 0.802198), 0.0, 0.0, 0, 0, Vector2(0.0866667, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.1, 0.681319), 0.0, 0.0, 0, 0, Vector2(0.126667, 0.879121), 0.0, 0.0, 0, 0, Vector2(0.146667, 0.56044), 0.0, 0.0, 0, 0, Vector2(0.24, 0), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_1afs2"]
+curve = SubResource("Curve_gxmqf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1lhpi"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+alpha_curve = SubResource("CurveTexture_1afs2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tru55"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.860044, 0.437659, 7.70092e-07, 1)
+alpha_curve = SubResource("CurveTexture_1afs2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ffju7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+color = Color(2.40654e-06, 0.63099, 0.776894, 1)
+alpha_curve = SubResource("CurveTexture_1afs2")
+
+[sub_resource type="Curve" id="Curve_05mim"]
+_data = [Vector2(0.126667, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.206667, 0.362637), 0.0, 0.0, 0, 0, Vector2(0.333333, 0.758242), 0.0, 0.0, 0, 0, Vector2(0.366667, 0.252747), 0.0, 0.0, 0, 0, Vector2(0.406667, 0.549451), 0.0, 0.0, 0, 0, Vector2(0.6, 0.824176), 0.0, 0.0, 0, 0, Vector2(0.713333, 0.538462), 0.0, 0.0, 0, 0, Vector2(0.78, 0.813187), 0.0, 0.0, 0, 0, Vector2(0.84, 0.67033), 0.0, 0.0, 0, 0, Vector2(0.94, 0.791209), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_2qy5s"]
+curve = SubResource("Curve_05mim")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lhw7r"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_2qy5s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cwojh"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.947162, 0, 0.0320439, 1)
+alpha_curve = SubResource("CurveTexture_2qy5s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mfitv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0.489621, 0.969374, 1)
+alpha_curve = SubResource("CurveTexture_2qy5s")
+
+[sub_resource type="Curve" id="Curve_54ql7"]
+_data = [Vector2(0.0666667, 0.703297), 0.0, 0.0, 0, 0, Vector2(0.126667, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.18, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.226667, 0.615385), 0.0, 0.0, 0, 0, Vector2(0.286667, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.36, 0.43956), 0.0, 0.0, 0, 0, Vector2(0.413333, 0.637363), 0.0, 0.0, 0, 0, Vector2(0.466667, 0.846154), 0.0, 0.0, 0, 0, Vector2(0.54, 0.692308), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_p27u4"]
+curve = SubResource("Curve_54ql7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uuaod"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+alpha_curve = SubResource("CurveTexture_p27u4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45sou"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1, 0.381825, 0.273471, 1)
+alpha_curve = SubResource("CurveTexture_p27u4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7aau2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1.34766e-06, 0.37512, 0.970507, 1)
+alpha_curve = SubResource("CurveTexture_p27u4")
+
+[sub_resource type="Curve" id="Curve_gli5n"]
+_data = [Vector2(0, 0.923077), 0.0, 0.0, 0, 0, Vector2(0.0133333, 0.604396), 0.0, 0.0, 0, 0, Vector2(0.0533333, 0.802198), 0.0, 0.0, 0, 0, Vector2(0.0866667, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.1, 0.681319), 0.0, 0.0, 0, 0, Vector2(0.126667, 0.879121), 0.0, 0.0, 0, 0, Vector2(0.146667, 0.56044), 0.0, 0.0, 0, 0, Vector2(0.24, 0), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_u1li4"]
+curve = SubResource("Curve_gli5n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2btyl"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+alpha_curve = SubResource("CurveTexture_u1li4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yg662"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.860044, 0.437659, 7.70092e-07, 1)
+alpha_curve = SubResource("CurveTexture_u1li4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1d3jp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 180, 1)
+spread = 5.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+color = Color(2.40654e-06, 0.63099, 0.776894, 1)
+alpha_curve = SubResource("CurveTexture_u1li4")
+
+[node name="Starfield" type="Node2D"]
+
+[node name="StarfieldBack" type="GPUParticles2D" parent="."]
+z_index = -100
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_mt2xm")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldBackRed" type="GPUParticles2D" parent="."]
+z_index = -100
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_g2pi7")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldBackBlue" type="GPUParticles2D" parent="."]
+z_index = -100
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_x0q7h")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldMiddle" type="GPUParticles2D" parent="."]
+z_index = -95
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_44qum")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldMiddle2" type="GPUParticles2D" parent="."]
+z_index = -95
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_qclkp")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldMiddle3" type="GPUParticles2D" parent="."]
+z_index = -95
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_irkxs")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldFront" type="GPUParticles2D" parent="."]
+z_index = -90
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 35
+process_material = SubResource("ParticleProcessMaterial_1lhpi")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldFront2" type="GPUParticles2D" parent="."]
+z_index = -90
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_tru55")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldFront3" type="GPUParticles2D" parent="."]
+z_index = -90
+position = Vector2(669, 144)
+rotation = -0.107027
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_ffju7")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="BG ORIGINAL" type="Node2D" parent="."]
+visible = false
+position = Vector2(670, 180)
+
+[node name="StarfieldBack" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -100
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_lhw7r")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldBackRed" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -100
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_cwojh")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldBackBlue" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -100
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_mfitv")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldMiddle" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -95
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_uuaod")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldMiddle2" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -95
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_45sou")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldMiddle3" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -95
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_7aau2")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldFront" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -90
+amount = 35
+process_material = SubResource("ParticleProcessMaterial_2btyl")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldFront2" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -90
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_yg662")
+lifetime = 140.0
+preprocess = 280.0
+
+[node name="StarfieldFront3" type="GPUParticles2D" parent="BG ORIGINAL"]
+z_index = -90
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_1d3jp")
+lifetime = 140.0
+preprocess = 280.0

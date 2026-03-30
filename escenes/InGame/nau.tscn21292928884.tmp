@@ -1,0 +1,349 @@
+[gd_scene format=3 uid="uid://ojki2y6ofr14"]
+
+[ext_resource type="Script" uid="uid://c8wwva3aqnbkg" path="res://escenes/InGame/nau.gd" id="1_vf3k4"]
+[ext_resource type="Texture2D" uid="uid://bf86rvkdi1l0x" path="res://sprites/ship.png" id="2_2opvx"]
+[ext_resource type="Texture2D" uid="uid://s7jpd8vmiv86" path="res://sprites/effect_yellow.png" id="2_wmheb"]
+[ext_resource type="Texture2D" uid="uid://n4cyrtymxhvf" path="res://sprites/crosshairs_tilesheet_white.png" id="4_8exhv"]
+[ext_resource type="Texture2D" uid="uid://ccr75b22mo3da" path="res://sprites/zx-spectrum-8x.png" id="4_imjyb"]
+[ext_resource type="Texture2D" uid="uid://eqrcajcy53i" path="res://sprites/07.png" id="5_mocn2"]
+[ext_resource type="AudioStream" uid="uid://dtvwldauq5l4t" path="res://fx/spaceship_old.mp3" id="6_4wkiw"]
+[ext_resource type="AudioStream" uid="uid://c42dxgc8dynsl" path="res://fx/87043__runnerpack__weapappear.wav" id="7_fbkt8"]
+
+[sub_resource type="Curve" id="Curve_yj7pf"]
+_data = [Vector2(0, 0.989011), 0.0, 0.0, 0, 0, Vector2(0.953333, 0.010989), -2.90886, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x2ymd"]
+curve = SubResource("Curve_yj7pf")
+
+[sub_resource type="Curve" id="Curve_5ghf2"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vm87y"]
+curve = SubResource("Curve_5ghf2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iy3co"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 7, 1)
+angle_min = -45.0
+angle_max = 45.0
+angle_curve = SubResource("CurveTexture_vm87y")
+inherit_velocity_ratio = 0.1
+velocity_pivot = Vector3(5, 5, 0)
+direction = Vector3(1, 1, 0)
+initial_velocity_min = -20.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 0.5
+color = Color(0.410166, 0.822502, 0.877081, 1)
+alpha_curve = SubResource("CurveTexture_x2ymd")
+hue_variation_min = -0.14
+hue_variation_max = 0.05
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rvit"]
+atlas = ExtResource("5_mocn2")
+region = Rect2(0, 36, 16.3056, 8.50058)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp5lm"]
+atlas = ExtResource("5_mocn2")
+region = Rect2(112.996, 69.0416, 14.3639, 6.36777)
+margin = Rect2(0, 0, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfbfe"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85rvp"]
+bg_color = Color(0.10596248, 0.6403632, 0.9243144, 1)
+skew = Vector2(0.36, 0)
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1avkw"]
+atlas = ExtResource("4_8exhv")
+region = Rect2(70, 0, 64, 64)
+
+[sub_resource type="Animation" id="Animation_fbkt8"]
+resource_name = "Damage"
+length = 1.3333334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.33333334, 0.6666667, 1, 1.3333334),
+"transitions": PackedFloat32Array(0.5358867, 2.07053, 3.6050022, 2.07053, 1),
+"update": 0,
+"values": [Color(0, 0.847059, 0.847059, 1), Color(0.8324788, 0.20034349, 0.08727456, 1), Color(0, 0.847059, 0.847059, 1), Color(0.8324788, 0.20034349, 0.08727456, 1), Color(0, 0.847059, 0.847059, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_djkti"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.508, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.857761, 0.20105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionPolygon2D/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.847059, 0.847059, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pyhwt"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.508, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_7kmk8"]
+resource_name = "teleport_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.366667, 0.5, 0.633333),
+"transitions": PackedFloat32Array(1.86607, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.592, 0.525), Vector2(0.533, 0.524), Vector2(0.362, 0.505), Vector2(0.508, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.433333),
+"transitions": PackedFloat32Array(2.21914, 1),
+"update": 0,
+"values": [Vector2(-250, 0.201), Vector2(0.857761, 0.20105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionPolygon2D/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0, 0.847059, 0.847059, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uf5f1"]
+_data = {
+&"Damage": SubResource("Animation_fbkt8"),
+&"RESET": SubResource("Animation_djkti"),
+&"idle": SubResource("Animation_pyhwt"),
+&"teleport_in": SubResource("Animation_7kmk8")
+}
+
+[node name="Nau" type="CharacterBody2D" unique_id=1945557052]
+script = ExtResource("1_vf3k4")
+dash_speed = null
+max_speed = null
+health = null
+reload_time = null
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=370048125]
+visible = false
+offset_left = -33.0
+offset_top = -66.0
+offset_right = 73.0
+offset_bottom = -26.0
+text = "test"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=780929495]
+unique_name_in_owner = true
+position = Vector2(-3.8147e-06, 3.8147e-06)
+rotation = -1.5708
+scale = Vector2(0.978316, 0.994792)
+polygon = PackedVector2Array(12.265979, 4.7501984e-05, -7.155104, -12.062844, -11.243781, -7.0366826, -7.1551337, -4.020962, -7.155167, 5.0261545, -11.243836, 8.041845, -7.155193, 12.0628, 12.265975, 1.0052826)
+
+[node name="SpriteReactor" type="Sprite2D" parent="CollisionPolygon2D" unique_id=1382380593]
+modulate = Color(0.562524, 0.848047, 1, 1)
+position = Vector2(-7.1551485, -2.169609e-05)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_wmheb")
+centered = false
+offset = Vector2(-62.39, -33.135)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CollisionPolygon2D" unique_id=524372868]
+position = Vector2(-7.1551485, -2.1576881e-05)
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_iy3co")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionPolygon2D" unique_id=319676165]
+modulate = Color(0, 0.847059, 0.847059, 1)
+position = Vector2(0.857761, 0.20105)
+scale = Vector2(0.508, 0.5)
+texture = ExtResource("2_2opvx")
+
+[node name="Zx-spectrum-8x" type="Sprite2D" parent="CollisionPolygon2D" unique_id=121401855]
+visible = false
+position = Vector2(-56.2194, 94.4919)
+texture = ExtResource("4_imjyb")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=843408251]
+unique_name_in_owner = true
+
+[node name="UI" type="Control" parent="." unique_id=449487577]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 63.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI" unique_id=153467843]
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = 13.0
+offset_right = 15.0
+offset_bottom = 19.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = SubResource("AtlasTexture_6rvit")
+texture_progress = SubResource("AtlasTexture_bp5lm")
+
+[node name="DashBar" type="ProgressBar" parent="UI" unique_id=973818127]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 19.0
+offset_right = -1.0
+offset_bottom = 25.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_cfbfe")
+theme_override_styles/fill = SubResource("StyleBoxFlat_85rvp")
+value = 100.0
+show_percentage = false
+
+[node name="Crosshair" type="Node2D" parent="UI" unique_id=690270817]
+
+[node name="Crosshair2" type="TextureRect" parent="UI/Crosshair" unique_id=1116660083]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -68.0
+offset_right = 33.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.55, 0.55)
+pivot_offset = Vector2(31, 32.5)
+texture = SubResource("AtlasTexture_1avkw")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ShootingPoint" type="Node2D" parent="." unique_id=2003553265]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1883525419]
+libraries/ = SubResource("AnimationLibrary_uf5f1")
+autoplay = &"teleport_in"
+
+[node name="FX" type="AudioStreamPlayer" parent="." unique_id=750747566]
+stream = ExtResource("7_fbkt8")
+volume_db = -6.5
+
+[node name="Fx_motor" type="AudioStreamPlayer" parent="." unique_id=354033746]
+stream = ExtResource("6_4wkiw")
+volume_db = -42.0
+autoplay = true
+playback_type = 1
+
+[node name="Reload" type="Timer" parent="." unique_id=557584567]
+
+[node name="Dash" type="Timer" parent="." unique_id=1688329840]
+wait_time = 0.05
+one_shot = true
+
+[node name="DashReload" type="Timer" parent="." unique_id=1879215909]
+wait_time = 10.0
+one_shot = true
+
+[node name="Damage_time" type="Timer" parent="." unique_id=203636463]
+
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
+[connection signal="timeout" from="Dash" to="." method="_on_dash_timeout"]
+[connection signal="timeout" from="DashReload" to="." method="_on_dash_reload_timeout"]
+[connection signal="timeout" from="Damage_time" to="." method="_on_damage_time_timeout"]

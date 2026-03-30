@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bb2851hvcmwp4"]
+
+[ext_resource type="Script" uid="uid://6gvvgug4fods" path="res://escenes/main_menu.gd" id="1_8xixe"]
+[ext_resource type="FontFile" uid="uid://bok3qcg6jmgnn" path="res://fonts/Crang.ttf" id="1_jdg5n"]
+[ext_resource type="Texture2D" uid="uid://ccr75b22mo3da" path="res://sprites/zx-spectrum-8x.png" id="2_ffhhd"]
+[ext_resource type="FontFile" uid="uid://dp5l83y6p2n52" path="res://fonts/Game-Font.ttf" id="3_2mo3w"]
+[ext_resource type="PackedScene" uid="uid://bkpcenigritt0" path="res://escenes/bg_starfield.tscn" id="6_efcc2"]
+[ext_resource type="AudioStream" uid="uid://y20yqm814bmd" path="res://fx/442180__dylanthefish__ambient-space-3.mp3" id="6_rovqh"]
+[ext_resource type="AudioStream" uid="uid://by1enovm3g0pf" path="res://fx/167212__bliss__oxygenated-breathing-inside-space-helmet.mp3" id="7_waa0y"]
+
+[node name="Main Menu" type="Control" unique_id=1811846328]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8xixe")
+
+[node name="BG" parent="." unique_id=1862575017 instance=ExtResource("6_efcc2")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=718998077]
+layout_mode = 0
+offset_left = 110.0
+offset_top = -22.0
+offset_right = 518.0
+offset_bottom = 254.0
+theme_override_colors/default_color = Color(1, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 0, 1)
+theme_override_constants/line_separation = 10
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/normal_font = ExtResource("1_jdg5n")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=4.0 connected=1][fade start=-5 length=40]
+Pràctica
+Final[/fade][/wave]"
+
+[node name="Zx-spectrum-8x" type="Sprite2D" parent="." unique_id=1136563808]
+position = Vector2(752, 29)
+texture = ExtResource("2_ffhhd")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1869138286]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 251.0
+offset_right = 638.0
+offset_bottom = 286.0
+theme_override_fonts/normal_font = ExtResource("3_2mo3w")
+theme_override_font_sizes/normal_font_size = 54
+bbcode_enabled = true
+text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0][center]prem espai per comencar[/center][/pulse]"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=683545856]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -36.0
+offset_right = 319.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_2mo3w")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Mou amb WASD apunta amb el ratoli i dispara fent click"
+fit_content = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=207101182]
+stream = ExtResource("6_rovqh")
+volume_db = -6.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=287429290]
+stream = ExtResource("7_waa0y")
+volume_db = -12.0
+autoplay = true

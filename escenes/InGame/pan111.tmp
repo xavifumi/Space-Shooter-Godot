@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://nojofhtnwike"]
+
+[ext_resource type="PackedScene" uid="uid://ojki2y6ofr14" path="res://escenes/InGame/nau.tscn" id="1_g77nb"]
+[ext_resource type="Script" path="res://escenes/InGame/pantalla_joc.gd" id="1_p6tvd"]
+[ext_resource type="PackedScene" uid="uid://bkpcenigritt0" path="res://escenes/bg_starfield.tscn" id="2_jmbij"]
+
+[node name="Pantalla" type="Node2D"]
+script = ExtResource("1_p6tvd")
+
+[node name="Jugador" type="Node2D" parent="."]
+
+[node name="Nau" parent="Jugador" instance=ExtResource("1_g77nb")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Starfield" parent="." instance=ExtResource("2_jmbij")]
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = true
