@@ -14,7 +14,24 @@ func _ready() -> void:
 	jugador = get_node("Jugador/Nau")
 	jugador.position = DisplayServer.screen_get_size()/2
 	tipus_control = "A"
-	pass # Replace with function body.
+	$"/root/GestorOnades".start_game()
+	$"/root/GestorOnades".wave_finished.connect(_on_wave_finished)
+	#$"/root/GestorOnades".wave_started.connect(_on_wave_started)
+
+func _on_wave_finished(wave):
+	#get_tree().paused = true
+	#show_upgrade_menu()
+	$"/root/GestorOnades".start_next_wave()
+
+func _on_wave_started(wave):
+	pass
+
+func show_upgrade_menu():
+	pass
+
+func _on_upgrade_selected():
+	get_tree().paused = false
+	$"/root/GestorOnades".start_next_wave()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

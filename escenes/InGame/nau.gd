@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	var speed := velocity.length()
 	var fx_motor = get_node("Fx_motor")
 	var volume_db
-	print(speed)
+	#print(speed)
 	if speed > 5.0:  # llindar per evitar soroll quan quasi no es mou
 		if not fx_motor.playing:
 			fx_motor.play()
@@ -92,9 +92,7 @@ func _process(delta: float) -> void:
 	dash_bar.value = dash_bar.max_value - dash_reload.get_time_left()*10
 	colisio = move_and_collide(velocity*delta)
 	if colisio:
-		print("Colisio")
 		var colisionador = colisio.get_collider()
-		print(colisionador)
 		if colisionador is Enemic:
 			take_damage(1)
 

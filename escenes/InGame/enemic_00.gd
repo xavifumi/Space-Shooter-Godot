@@ -7,7 +7,7 @@ var pupila
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	jugador = get_node("../Jugador/Nau")
+	jugador = get_node("../../Jugador/Nau")
 	carrega_atac = get_node("AttackCooldown")
 	pupila = get_node("Grafic/Sprite2D/Pupila")
 	health = 3
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 			$Grafic/Crack.start()
 		$Grafic/Crack.visible = true
 		#$Grafic/Sprite2D.visible = false
-		estat = Estats.MORT
+		
 
 func atac()->void:
 	if carrega_atac.is_stopped():

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Enemic
 
-@export var health = 1 : set = _set_health
+@export var health : int #: set = _set_health
+@export var speed = 0
 @export var Hitbox : Area2D
 @export var health_bar : ProgressBar
 var angle_impacte
@@ -46,6 +47,9 @@ func take_damage(amount : int) -> void:
 		$Audio.play()
 		$Audio.stream = load("res://fx/monstre1.wav")
 		$Audio.set_volume_db(-12)
+		if estat != Estats.MORT:
+			$"/root/GestorOnades".enemy_killed()
+		estat = Estats.MORT
 	else :
 		$Particle_off.set_wait_time(0.3)
 		$AnimationPlayer.play("Damage")
