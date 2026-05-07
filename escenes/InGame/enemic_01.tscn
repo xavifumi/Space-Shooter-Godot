@@ -56,7 +56,7 @@ shader_parameter/anim_offset_min = 0.0
 shader_parameter/anim_offset_max = 0.0
 shader_parameter/lifetime_randomness = 0.3
 shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
-shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/emission_shape_scale = Vector3(0.7, 0.7, 1)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
 shader_parameter/emission_box_extents = Vector3(0, 0, 0)
 shader_parameter/gravity = Vector3(0, 0, 0)
@@ -268,7 +268,7 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Crack" type="GPUParticles2D" parent="Grafic" unique_id=2022047551]
 visible = false
-position = Vector2(-15.714285, -15.714285)
+position = Vector2(-24.285715, -28.57143)
 scale = Vector2(0.99999994, 0.99999994)
 amount = 2500
 lifetime = 1.5
