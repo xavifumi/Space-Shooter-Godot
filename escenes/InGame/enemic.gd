@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		Estats.APARICIO:
 			pass
 		Estats.ATAC:
-			atac()
+			atac(delta)
 		Estats.MORT:
 			death()
 
@@ -66,7 +66,7 @@ func take_damage(amount : int) -> void:
 	$Sang.emitting = true
 	$Particle_off.start()
 
-func atac() -> void:
+func atac(delta: float) -> void:
 	pass
 
 func _on_hitbox_damage_taken(amount):

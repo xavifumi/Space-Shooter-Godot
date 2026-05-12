@@ -2,6 +2,7 @@ extends Enemic
 
 var jugador : Node2D
 var carrega_atac : Timer
+var velocidad_rotacion := 5.0
 var pupila 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +16,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
-	$Grafic.rotation = get_angle_to(jugador.position) - PI/2
+	var angulo_objetivo = get_angle_to(jugador.position) - PI/2
+	
+	$Grafic.rotation = lerp_angle(
+		$Grafic.rotation,
+		angulo_objetivo,
+		velocidad_rotacion * delta
+	)
 	if estat == Estats.ATAC :
 		var alfa_pupila = remap(carrega_atac.get_time_left(), 3.0, 0.0, 0, 1)
 		pupila.modulate = Color(1,1,1,alfa_pupila)
@@ -28,7 +35,7 @@ func _process(delta: float) -> void:
 		#$Grafic/Sprite2D.visible = false
 		
 
-func atac()->void:
+func atac(delta: float)->void:
 	if carrega_atac.is_stopped():
 		carrega_atac.start()
 	

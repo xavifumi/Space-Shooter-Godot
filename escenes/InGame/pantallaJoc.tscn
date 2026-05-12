@@ -18,8 +18,8 @@ script = ExtResource("1_p6tvd")
 script = ExtResource("3_v7u3h")
 enemy_scene = Array[PackedScene]([ExtResource("3_sha1q"), ExtResource("5_v7u3h")])
 
-[node name="enemic" parent="GeneradorEnemics" unique_id=2097875386 instance=ExtResource("5_v7u3h")]
-position = Vector2(236, 88)
+[node name="enemic" parent="GeneradorEnemics" unique_id=2097875386 instance=ExtResource("3_sha1q")]
+position = Vector2(350, 101)
 
 [node name="Starfield" parent="." unique_id=1371224960 instance=ExtResource("2_jmbij")]
 

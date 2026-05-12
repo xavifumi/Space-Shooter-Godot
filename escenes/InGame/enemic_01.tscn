@@ -1,43 +1,57 @@
 [gd_scene format=3 uid="uid://d13h2vd7ux5pr"]
 
 [ext_resource type="Script" uid="uid://b84ity1fejw5a" path="res://escenes/InGame/enemic_01.gd" id="1_xoti7"]
+[ext_resource type="Shader" uid="uid://cnqf0rfy60ul6" path="res://escenes/shaders/shaders/burn.gdshader" id="2_0dsya"]
 [ext_resource type="Texture2D" uid="uid://talddyow3lvs" path="res://sprites/Monstre100.png" id="2_u0d5a"]
-[ext_resource type="Shader" uid="uid://bdqiflni2rsc" path="res://escenes/shaders/shaders/crack.gdshader" id="2_xoti7"]
-[ext_resource type="Texture2D" uid="uid://2o0hnrmt62u5" path="res://escenes/shaders/shaders/spreadnoise.png" id="3_u0d5a"]
 [ext_resource type="Script" uid="uid://d0fhhgp532ihc" path="res://escenes/shaders/disintegration.gd" id="5_5a2kj"]
 
-[sub_resource type="Gradient" id="Gradient_aigf0"]
-offsets = PackedFloat32Array(0, 0.0437956, 1)
-colors = PackedColorArray(1, 1, 1, 0.889313, 0.22000003, 1, 0.28499997, 1, 0.894118, 1, 0.996078, 0)
+[sub_resource type="Curve" id="Curve_3rcyg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_re6a8"]
-gradient = SubResource("Gradient_aigf0")
+[sub_resource type="CurveTexture" id="CurveTexture_lhpvf"]
+curve = SubResource("Curve_3rcyg")
 
-[sub_resource type="Gradient" id="Gradient_kj0yv"]
-offsets = PackedFloat32Array(0, 0.0364963, 0.0985401)
-colors = PackedColorArray(1, 1, 1, 1, 0.22000003, 1, 0.28499997, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_xoti7"]
+offsets = PackedFloat32Array(0, 0.0255474, 0.0583942, 0.10219)
+colors = PackedColorArray(1, 0.141176, 0, 1, 0.0654297, 0.0273665, 0.00153351, 1, 0.213867, 0.0964909, 0, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_my4rq"]
-gradient = SubResource("Gradient_kj0yv")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i4rtg"]
+gradient = SubResource("Gradient_xoti7")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnl8c"]
-shader = ExtResource("2_xoti7")
+[sub_resource type="Gradient" id="Gradient_u0d5a"]
+offsets = PackedFloat32Array(0, 0.0654545, 0.112727, 0.156364, 0.669091, 0.981818, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.28125, 0, 1, 1, 0.962646, 0.402344, 0.990493, 1, 0.141176, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yfh0g"]
+gradient = SubResource("Gradient_u0d5a")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b3xql"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qajfe"]
+noise = SubResource("FastNoiseLite_b3xql")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0dsya"]
+load_path = "res://.godot/imported/Monstre100.png-148702743acf47ba5a0b7a764d0eabe1.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a2kj"]
+shader = ExtResource("2_0dsya")
 shader_parameter/direction = Vector3(0, -1, 0)
-shader_parameter/spread = 95.0
+shader_parameter/spread = 38.0
 shader_parameter/flatness = 0.0
 shader_parameter/inherit_emitter_velocity_ratio = 0.0
-shader_parameter/initial_linear_velocity_min = 5.0
-shader_parameter/initial_linear_velocity_max = 5.0
-shader_parameter/directional_velocity_min = 1.0
-shader_parameter/directional_velocity_max = 1.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_linear_velocity_max = 10.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
 shader_parameter/angular_velocity_min = 0.0
 shader_parameter/angular_velocity_max = 0.0
 shader_parameter/orbit_velocity_min = 0.0
 shader_parameter/orbit_velocity_max = 0.0
 shader_parameter/radial_velocity_min = 0.0
 shader_parameter/radial_velocity_max = 0.0
-shader_parameter/linear_accel_min = 1.0
-shader_parameter/linear_accel_max = 1.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
 shader_parameter/radial_accel_min = 0.0
 shader_parameter/radial_accel_max = 0.0
 shader_parameter/tangent_accel_min = 0.0
@@ -54,18 +68,19 @@ shader_parameter/anim_speed_min = 0.0
 shader_parameter/anim_speed_max = 0.0
 shader_parameter/anim_offset_min = 0.0
 shader_parameter/anim_offset_max = 0.0
-shader_parameter/lifetime_randomness = 0.3
+shader_parameter/lifetime_randomness = 0.8
 shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
-shader_parameter/emission_shape_scale = Vector3(0.7, 0.7, 1)
+shader_parameter/emission_shape_scale = Vector3(0.5, 0.5, 1)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
 shader_parameter/emission_box_extents = Vector3(0, 0, 0)
 shader_parameter/gravity = Vector3(0, 0, 0)
-shader_parameter/color_ramp = SubResource("GradientTexture1D_re6a8")
-shader_parameter/fade_ramp = SubResource("GradientTexture1D_my4rq")
-shader_parameter/sprite = ExtResource("2_u0d5a")
-shader_parameter/noise = ExtResource("3_u0d5a")
+shader_parameter/alpha_curve = SubResource("CurveTexture_lhpvf")
+shader_parameter/color_ramp = SubResource("GradientTexture1D_yfh0g")
+shader_parameter/burn_ramp = SubResource("GradientTexture1D_i4rtg")
+shader_parameter/sprite = SubResource("CompressedTexture2D_0dsya")
+shader_parameter/noise = SubResource("NoiseTexture2D_qajfe")
 shader_parameter/progress = 0.5
-shader_parameter/particle_lifetime_fraction = 0.1
+shader_parameter/particle_lifetime_fraction = 0.3
 
 [sub_resource type="Animation" id="Animation_aigf0"]
 resource_name = "Appear"
@@ -261,19 +276,19 @@ collision_mask = 2
 script = ExtResource("1_xoti7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1309075837]
-polygon = PackedVector2Array(-8, -12, -4, -12, -1, -9, 1, -13, 6, -16, 12, -15, 13, -14, 13, -9, -2, 14, -4, 14, -9, 8, -11, 2, -13, -2, -13, -9, -11, -12)
+polygon = PackedVector2Array(-4, -9, -1, -7, 0, -6, 1, -9, 4, -11, 9, -11, 10, -7, 7, -2, -2, 10, -3, 10, -7, 6, -8, 2, -9, -1, -9, -7, -7, -8)
 
 [node name="Grafic" type="Node2D" parent="." unique_id=1680761382]
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 
-[node name="Crack" type="GPUParticles2D" parent="Grafic" unique_id=2022047551]
+[node name="Crack" type="GPUParticles2D" parent="Grafic" unique_id=1642545737]
 visible = false
-position = Vector2(-24.285715, -28.57143)
+position = Vector2(-22, -30)
 scale = Vector2(0.99999994, 0.99999994)
-amount = 2500
-lifetime = 1.5
+amount = 3100
+lifetime = 3.0
 explosiveness = 1.0
-process_material = SubResource("ShaderMaterial_bnl8c")
+process_material = SubResource("ShaderMaterial_5a2kj")
 script = ExtResource("5_5a2kj")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grafic" unique_id=1569916552]
