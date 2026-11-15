@@ -1,0 +1,295 @@
+[gd_scene format=3 uid="uid://d3qb4q5yexybr"]
+
+[ext_resource type="Script" uid="uid://dr6upegcwxe55" path="res://escenes/InGame/enemic_02.gd" id="1_6meak"]
+[ext_resource type="Shader" uid="uid://w51atqdeqprd" path="res://escenes/shaders/shaders/sand.gdshader" id="2_6meak"]
+[ext_resource type="Texture2D" uid="uid://skyc8lcvqj4t" path="res://sprites/Monstre200.png" id="3_8ki2c"]
+[ext_resource type="Script" uid="uid://d0fhhgp532ihc" path="res://escenes/shaders/disintegration.gd" id="3_mqo17"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8ki2c"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ro50r"]
+noise = SubResource("FastNoiseLite_8ki2c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqo17"]
+shader = ExtResource("2_6meak")
+shader_parameter/direction = Vector3(0, 0, 0)
+shader_parameter/spread = 0.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_linear_velocity_max = 0.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_box_extents = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, 100, 0)
+shader_parameter/sprite = ExtResource("3_8ki2c")
+shader_parameter/noise = SubResource("NoiseTexture2D_ro50r")
+shader_parameter/progress = 0.5
+shader_parameter/particle_lifetime_fraction = 0.5
+
+[sub_resource type="Animation" id="Animation_aigf0"]
+resource_name = "Appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grafic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.78999996, 1, 1.2),
+"transitions": PackedFloat32Array(3.0314333, 1, 1, 1.9318728),
+"update": 0,
+"values": [Vector2(1.391, 0.005), Vector2(0.442, 1.27), Vector2(0.776, 0.602), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Grafic/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333332, 0.43333334, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 1, 0.16666651, 0), Color(0, 1, 0.16470589, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["res://fx/teleport.wav", -6, 0.0],
+"method": &"play_fx"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_h62co"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grafic/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.2619556, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0.7896612, 0.3562467, 1), Color(0, 0.7896612, 0.3562467, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wa8qw"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grafic/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666668, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0.7896612, 0.3562467, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pavvw"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:estat")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_g1rja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grafic/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Grafic/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.707, 0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:estat")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wa8qw"]
+_data = {
+&"Appear": SubResource("Animation_aigf0"),
+&"Damage": SubResource("Animation_h62co"),
+&"Death": SubResource("Animation_wa8qw"),
+&"Idle": SubResource("Animation_pavvw"),
+&"RESET": SubResource("Animation_g1rja")
+}
+
+[sub_resource type="Curve" id="Curve_pavvw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.45387453, 0), -7.020051, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g1rja"]
+curve = SubResource("Curve_pavvw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h62co"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, 1, 0)
+spread = 31.107
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+color = Color(0.2226663, 1, 0.28971258, 1)
+alpha_curve = SubResource("CurveTexture_g1rja")
+
+[node name="enemic" type="CharacterBody2D" unique_id=2097875386]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_6meak")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1309075837]
+polygon = PackedVector2Array(-11, 1, -8, -2, -5, -6, 1, -8, 4, -9, 7, -6, 9, -2, 11, 0, 10, 6, 5, 9, 3, 9, 2, 10, 0, 10, -4, 8, -8, 4)
+
+[node name="Grafic" type="Node2D" parent="." unique_id=1680761382]
+scale = Vector2(0.5, 0.5)
+
+[node name="Crack" type="GPUParticles2D" parent="Grafic" unique_id=1190683380]
+visible = false
+self_modulate = Color(0.521569, 0.521569, 0.521569, 1)
+position = Vector2(-32, -32)
+amount = 2500
+lifetime = 3.0
+explosiveness = 1.0
+process_material = SubResource("ShaderMaterial_mqo17")
+script = ExtResource("3_mqo17")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grafic" unique_id=1569916552]
+position = Vector2(0, -4.5022736e-07)
+scale = Vector2(0.707, 0.7)
+texture = ExtResource("3_8ki2c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2134760683]
+libraries/ = SubResource("AnimationLibrary_wa8qw")
+autoplay = &"Appear"
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1227321431]
+wait_time = 3.0
+
+[node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1121156037]
+max_polyphony = 3
+
+[node name="Sang" type="GPUParticles2D" parent="." unique_id=217049065]
+emitting = false
+amount = 128
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_h62co")
+
+[node name="Particle_off" type="Timer" parent="." unique_id=2080789433]
+wait_time = 0.3
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Particle_off" to="." method="_on_particle_off_timeout"]

@@ -123,7 +123,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0.847059, 0.847059, 1)]
+"values": [Color(0, 0.85, 0.85, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pyhwt"]
@@ -151,6 +163,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(3.6050022),
 "update": 0,
 "values": [Color(0, 0.847059, 0.847059, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7kmk8"]
@@ -205,6 +229,18 @@ tracks/3/keys = {
 "method": &"play"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uf5f1"]
 _data = {
@@ -215,6 +251,7 @@ _data = {
 }
 
 [node name="Nau" type="CharacterBody2D" unique_id=1945557052]
+modulate = Color(1, 1, 1, 0)
 collision_mask = 3
 script = ExtResource("1_vf3k4")
 
@@ -247,7 +284,7 @@ lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_iy3co")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionPolygon2D" unique_id=319676165]
-modulate = Color(0, 0.847059, 0.847059, 1)
+modulate = Color(0, 0.85, 0.85, 1)
 position = Vector2(0.857761, 0.20105)
 scale = Vector2(0.508, 0.5)
 texture = ExtResource("2_2opvx")
@@ -328,7 +365,7 @@ unique_name_in_owner = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1883525419]
 libraries/ = SubResource("AnimationLibrary_uf5f1")
-autoplay = &"teleport_in"
+autoplay = &"RESET"
 
 [node name="FX" type="AudioStreamPlayer" parent="." unique_id=750747566]
 stream = ExtResource("7_fbkt8")

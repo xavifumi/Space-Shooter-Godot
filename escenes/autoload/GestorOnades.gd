@@ -13,14 +13,17 @@ var difficulty: float = 1.0
 var spawn_interval: float = 1.0
 var spawning: bool = false
 
+var punts = 0
+
 signal wave_started(wave)
 signal wave_finished(wave)
 signal all_waves_completed()
 
 func start_game():
+	punts = 0
 	current_wave = 0
 	difficulty = 1.0
-	#start_next_wave()
+	start_next_wave()
 
 func start_next_wave():
 	current_wave += 1
@@ -34,7 +37,7 @@ func start_next_wave():
 	difficulty = 1.0 + (current_wave * 0.2)
 	
 	# Enemics per onada (exemple)
-	enemies_to_spawn = 5 + current_wave * 3
+	enemies_to_spawn = 2 + current_wave * 3
 	enemies_alive = 0
 	
 	spawning = true
@@ -47,7 +50,7 @@ func spawn_loop():
 	while enemies_to_spawn > 0:
 		await get_tree().create_timer(spawn_interval).timeout
 		spawn_enemy()
-		print( "to spawn: "+ str(enemies_to_spawn) + " - alive: " + str(enemies_alive))
+		#print( "to spawn: "+ str(enemies_to_spawn) + " - alive: " + str(enemies_alive))
 		enemies_to_spawn -= 1
 		enemies_alive += 1
 	
@@ -58,6 +61,7 @@ func spawn_enemy():
 	get_tree().call_group("generador", "spawn_enemy", difficulty)
 
 func enemy_killed():
+	punts += 1
 	enemies_alive -= 1
 	print("Enemy Killed!")
 	print( "to spawn: "+ str(enemies_to_spawn) + " - alive: " + str(enemies_alive))

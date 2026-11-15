@@ -1,5 +1,6 @@
 extends Node2D
 
+var menu_final:StringName = "uid://bwahv3l1q2y1m"
 var playlist = ["res://music/BattleMusic.mp3", 
 "res://music/BossTheme.mp3", 
 "res://music/Chase.mp3", 
@@ -14,6 +15,9 @@ func _ready() -> void:
 	jugador = get_node("Jugador/Nau")
 	jugador.position = DisplayServer.screen_get_size()/2
 	tipus_control = "A"
+	await get_tree().create_timer(0.5).timeout
+	jugador.animation_player.play('teleport_in')
+	await jugador.animation_player.animation_finished
 	$"/root/GestorOnades".start_game()
 	$"/root/GestorOnades".wave_finished.connect(_on_wave_finished)
 	#$"/root/GestorOnades".wave_started.connect(_on_wave_started)
@@ -37,8 +41,8 @@ func _on_upgrade_selected():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if jugador.health <= 0:
-			get_tree().change_scene_to_file("res://escenes/game_over.tscn")
-			
+			#get_tree().change_scene_to_file("res://escenes/game_over.tscn")
+			LoadingScreen.load_scene(menu_final)
 
 
 func start_jukebox() -> void:

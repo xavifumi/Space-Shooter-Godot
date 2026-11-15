@@ -16,12 +16,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Practica Final"
 run/main_scene="res://escenes/main_menu.tscn"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GestorOnades="*uid://d4am2s4bd0urv"
+SceneLoader="uid://bfp6wml5y1o7g"
+LoadingScreen="*uid://ct47oeqd68rqb"
 
 [display]
 
@@ -30,6 +32,10 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [global_group]
 

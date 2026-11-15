@@ -24,6 +24,7 @@ var damaging := false
 var pantalla
 var fx
 var colisio
+@onready var animation_player = $AnimationPlayer
 
 
 

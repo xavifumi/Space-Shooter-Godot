@@ -1,0 +1,21 @@
+extends Control
+
+var joc: StringName = "uid://nojofhtnwike"
+var puntuacio
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	puntuacio = $"/root/GestorOnades".punts
+	print(puntuacio)
+	$puntuacio.text = "[center]" + str(puntuacio)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _input(event:InputEvent) -> void:
+
+	if event is InputEventKey:
+		if event.keycode == KEY_SPACE:
+			LoadingScreen.load_scene(joc)
+			

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwahv3l1q2y1m"]
 
-[ext_resource type="Script" uid="uid://6gvvgug4fods" path="res://escenes/main_menu.gd" id="1_e3fyj"]
+[ext_resource type="Script" uid="uid://us64dhnv7imy" path="res://escenes/game_over.gd" id="1_y725y"]
 [ext_resource type="PackedScene" uid="uid://bkpcenigritt0" path="res://escenes/bg_starfield.tscn" id="2_dcytb"]
 [ext_resource type="FontFile" uid="uid://bok3qcg6jmgnn" path="res://fonts/Crang.ttf" id="3_bmtgq"]
 [ext_resource type="Texture2D" uid="uid://ccr75b22mo3da" path="res://sprites/zx-spectrum-8x.png" id="4_0dxnc"]
@@ -14,14 +14,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_e3fyj")
+script = ExtResource("1_y725y")
 
 [node name="BG" parent="." unique_id=131420072 instance=ExtResource("2_dcytb")]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1640039671]
 layout_mode = 0
 offset_left = 110.0
-offset_top = -51.0
+offset_top = -103.0
 offset_right = 518.0
 offset_bottom = 225.0
 theme_override_colors/default_color = Color(0.847059, 0, 0, 1)
@@ -49,9 +49,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -320.0
-offset_top = -142.0
+offset_top = -118.0
 offset_right = 319.0
-offset_bottom = -116.0
+offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("5_f4jrt")
@@ -68,9 +68,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -320.0
-offset_top = -117.0
+offset_top = -93.0
 offset_right = 319.0
-offset_bottom = -67.0
+offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("5_f4jrt")

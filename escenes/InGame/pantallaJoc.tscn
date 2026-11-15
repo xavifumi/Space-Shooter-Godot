@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bagdv5lsqlror" path="res://escenes/InGame/enemic_00.tscn" id="3_sha1q"]
 [ext_resource type="Script" uid="uid://cht00b7bwrlpa" path="res://escenes/InGame/GeneradorEnemics.gd" id="3_v7u3h"]
 [ext_resource type="PackedScene" uid="uid://d13h2vd7ux5pr" path="res://escenes/InGame/enemic_01.tscn" id="5_v7u3h"]
+[ext_resource type="PackedScene" uid="uid://d3qb4q5yexybr" path="res://escenes/InGame/enemic_02.tscn" id="6_jugib"]
 
 [node name="Pantalla" type="Node2D" unique_id=1229436035]
 script = ExtResource("1_p6tvd")
@@ -16,10 +17,7 @@ script = ExtResource("1_p6tvd")
 
 [node name="GeneradorEnemics" type="Node2D" parent="." unique_id=599169271 groups=["generador"]]
 script = ExtResource("3_v7u3h")
-enemy_scene = Array[PackedScene]([ExtResource("3_sha1q"), ExtResource("5_v7u3h")])
-
-[node name="enemic" parent="GeneradorEnemics" unique_id=2097875386 instance=ExtResource("3_sha1q")]
-position = Vector2(350, 101)
+enemy_scene = Array[PackedScene]([ExtResource("3_sha1q"), ExtResource("5_v7u3h"), ExtResource("6_jugib")])
 
 [node name="Starfield" parent="." unique_id=1371224960 instance=ExtResource("2_jmbij")]
 
@@ -27,3 +25,6 @@ position = Vector2(350, 101)
 unique_name_in_owner = true
 volume_db = -6.0
 autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2097000499]
+position = Vector2(320, 180)
