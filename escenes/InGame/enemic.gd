@@ -68,6 +68,10 @@ func take_damage(amount : int) -> void:
 
 func atac(delta: float) -> void:
 	pass
+	
+func shake(amount: float) -> void:
+	var camera = get_viewport().get_camera_2d()
+	camera.add_trauma(5.0)
 
 func _on_hitbox_damage_taken(amount):
 	take_damage(amount)

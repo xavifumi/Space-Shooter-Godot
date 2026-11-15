@@ -136,6 +136,10 @@ func play_fx(stream_name : String, volume : int, from : float):
 		fx.set_volume_db(volume)
 	fx.play(from)
 
+func shake(amount: float) -> void:
+	var camera = get_viewport().get_camera_2d()
+	camera.add_trauma(5.0)
+
 func dash():
 	if dash_reload.is_stopped() :
 		dashing = true
@@ -162,6 +166,7 @@ func take_damage(amount : int) -> void:
 		$AnimationPlayer.play("Damage")
 		damaging = true
 		$Damage_time.start()
+		shake(0.001)
 		if health_bar :
 			health_bar.value = health
 			if health_bar.value <= health_bar.max_value * 0.6  and health_bar.value > health_bar.max_value * 0.3:
