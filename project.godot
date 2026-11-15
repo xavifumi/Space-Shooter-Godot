@@ -22,8 +22,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GestorOnades="*uid://d4am2s4bd0urv"
-SceneLoader="uid://bfp6wml5y1o7g"
 LoadingScreen="*uid://ct47oeqd68rqb"
+Game="*uid://wnoq44jwsqt"
 
 [display]
 

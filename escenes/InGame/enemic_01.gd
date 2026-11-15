@@ -34,7 +34,8 @@ func atac(delta: float)->void:
 		#carrega_atac.start()
 
 	# --- MOVIMENT CAP AL JUGADOR ---
-	var direction := jugador.position - position
+	#var direction := jugador.position - position
+	var direction := Game.wrapped_delta(position, jugador.position)
 
 	if direction.length() > 1.0:
 		direction = direction.normalized()
@@ -51,7 +52,9 @@ func atac(delta: float)->void:
 		if enemic == self:
 			continue
 
-		var distancia = position.distance_to(enemic.position)
+		#var distancia = position.distance_to(enemic.position)
+		var delta_enemic = Game.wrapped_delta(position, enemic.position)
+		var distancia = delta_enemic.length()
 
 		# Si està massa a prop
 		if distancia < separacio_distancia and distancia > 0:
@@ -71,7 +74,8 @@ func atac(delta: float)->void:
 	var steering := desired_velocity - velocity
 	velocity += steering * steering_factor * delta
 
-	position += velocity * delta
+	#position += velocity * delta
+	position = Game.wrap_position(position)
 
 func _on_attack_cooldown_timeout() -> void:
 	pass

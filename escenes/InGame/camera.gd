@@ -1,7 +1,7 @@
 extends Camera2D
 
 @export var decay := 0.8 # How quickly shaking stops [0, 1]
-@export var max_offset := Vector2(10, 7) # Max displacement in pixels
+@export var max_offset := Vector2(6, 3) # Max displacement in pixels
 @export var max_roll := 0.1 # Max rotation in radians
 @export var noise : FastNoiseLite # Optional: for smoother noise
 
@@ -18,6 +18,7 @@ func add_trauma(amount: float):
 	trauma = min(trauma + amount, 1.0)
 
 func _process(delta: float):
+	
 	if trauma > 0:
 		trauma = max(trauma - decay * delta, 0)
 		shake()

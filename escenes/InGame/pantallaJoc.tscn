@@ -8,6 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://d13h2vd7ux5pr" path="res://escenes/InGame/enemic_01.tscn" id="5_v7u3h"]
 [ext_resource type="PackedScene" uid="uid://d3qb4q5yexybr" path="res://escenes/InGame/enemic_02.tscn" id="6_jugib"]
 [ext_resource type="Script" uid="uid://cxyt030g2ltot" path="res://escenes/InGame/camera.gd" id="8_qbbbo"]
+[ext_resource type="Script" uid="uid://d3f4038o30g0e" path="res://escenes/InGame/background.gd" id="9_33fdg"]
+[ext_resource type="Shader" uid="uid://dcf64re468rj5" path="res://shaders/BG_Starfield.gdshader" id="9_ef1lg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1mqh"]
+shader = ExtResource("9_ef1lg")
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/layers = 4
+shader_parameter/min_speed = 0.1
+shader_parameter/max_speed = 1.0
+shader_parameter/cell_far = 40.0
+shader_parameter/cell_near = 90.0
+shader_parameter/star_chance = 0.5
+shader_parameter/color_chance = 0.08
+shader_parameter/twinkle = 0.3
+shader_parameter/bg_color = Color(0, 0, 0.02, 1)
+shader_parameter/star_red = Color(0.949, 0, 0.031, 1)
+shader_parameter/star_blue = Color(0, 0.49, 0.969, 1)
 
 [node name="Pantalla" type="Node2D" unique_id=1229436035]
 script = ExtResource("1_p6tvd")
@@ -16,17 +33,30 @@ script = ExtResource("1_p6tvd")
 
 [node name="Nau" parent="Jugador" unique_id=975055181 instance=ExtResource("1_g77nb")]
 
+[node name="Camera2D" type="Camera2D" parent="Jugador/Nau" unique_id=2097000499]
+position = Vector2(-1, 1)
+script = ExtResource("8_qbbbo")
+
 [node name="GeneradorEnemics" type="Node2D" parent="." unique_id=599169271 groups=["generador"]]
 script = ExtResource("3_v7u3h")
 enemy_scene = Array[PackedScene]([ExtResource("3_sha1q"), ExtResource("5_v7u3h"), ExtResource("6_jugib")])
 
 [node name="Starfield" parent="." unique_id=1371224960 instance=ExtResource("2_jmbij")]
+visible = false
 
 [node name="Musica" type="AudioStreamPlayer" parent="." unique_id=451494062]
 unique_name_in_owner = true
 volume_db = -6.0
 autoplay = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2097000499]
-position = Vector2(320, 180)
-script = ExtResource("8_qbbbo")
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1073872605]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="CanvasLayer" unique_id=2004380594]
+material = SubResource("ShaderMaterial_f1mqh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_33fdg")

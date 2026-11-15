@@ -9,11 +9,13 @@ var playlist = ["res://music/BattleMusic.mp3",
 var current_song
 var jugador
 var tipus_control
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start_jukebox()
 	jugador = get_node("Jugador/Nau")
-	jugador.position = DisplayServer.screen_get_size()/2
+	#jugador.position = DisplayServer.screen_get_size()/2
+	jugador.position = Vector2(Game.WORLD_WIDTH/2, Game.WORLD_HEIGHT/2 )
 	tipus_control = "A"
 	await get_tree().create_timer(0.5).timeout
 	jugador.animation_player.play('teleport_in')
@@ -40,6 +42,7 @@ func _on_upgrade_selected():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$CanvasLayer/Background.player_velocity = $"Jugador/Nau".velocity
 	if jugador.health <= 0:
 			#get_tree().change_scene_to_file("res://escenes/game_over.tscn")
 			LoadingScreen.load_scene(menu_final)

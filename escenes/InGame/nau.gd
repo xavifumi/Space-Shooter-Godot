@@ -27,8 +27,6 @@ var colisio
 @onready var animation_player = $AnimationPlayer
 
 
-
-
 func _ready() -> void: 
 	sprite = get_node("CollisionPolygon2D/Sprite2D")
 	reload = get_node("Reload")
@@ -114,8 +112,11 @@ func movement(delta: float) -> void:
 		position += velocity * delta
 		
 		var viewport_size := get_viewport_rect().size
-		position.x = wrapf(position.x, 0 - sprite.texture.get_width()/3, viewport_size.x + sprite.texture.get_width()/3)
-		position.y = wrapf(position.y, 0 - sprite.texture.get_height()/3, viewport_size.y + sprite.texture.get_height()/3)
+		#position.x = wrapf(position.x, 0 - sprite.texture.get_width()/3, viewport_size.x + sprite.texture.get_width()/3)
+		#position.y = wrapf(position.y, 0 - sprite.texture.get_height()/3, viewport_size.y + sprite.texture.get_height()/3)
+		position.x = wrapf(position.x, 0.0, Game.WORLD_WIDTH)
+		position.y = wrapf(position.y, 0.0, Game.WORLD_HEIGHT)
+		
 	if pantalla == "B":
 		pass
 
