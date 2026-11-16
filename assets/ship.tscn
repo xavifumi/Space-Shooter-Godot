@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dmv50krf4bo5r"]
+
+[ext_resource type="Shader" uid="uid://ca621vwvrw4qq" path="res://assets/ship_perspective_layered.gdshader" id="1_lubvm"]
+[ext_resource type="Texture2D" uid="uid://ccaltbfx5mgyo" path="res://assets/ship_layers.png" id="2_5m006"]
+[ext_resource type="Texture2D" uid="uid://butykhmpavvcw" path="res://assets/ship.png" id="3_pdppw"]
+[ext_resource type="Script" uid="uid://7n6qyl468u4w" path="res://assets/ship.gd" id="4_p1sls"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_quu6q"]
+shader = ExtResource("1_lubvm")
+shader_parameter/parts_sampler = ExtResource("2_5m006")
+shader_parameter/field_of_view = 90.0
+shader_parameter/rotation_y = 0.0
+shader_parameter/rotation_x = 8.549999989782009e-06
+shader_parameter/inset = 0.0
+shader_parameter/line_thickness = 1.0
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1384281416]
+material = SubResource("ShaderMaterial_quu6q")
+position = Vector2(4, 0)
+texture = ExtResource("3_pdppw")
+script = ExtResource("4_p1sls")
+
+[node name="Timer" type="Timer" parent="." unique_id=1213005849]
+wait_time = 0.6
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
