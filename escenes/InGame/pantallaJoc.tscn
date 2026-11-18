@@ -12,6 +12,7 @@
 [ext_resource type="Shader" uid="uid://dcf64re468rj5" path="res://shaders/BG_Starfield.gdshader" id="9_ef1lg"]
 [ext_resource type="Script" uid="uid://cftrmqptfw2if" path="res://escenes/InGame/PlanetShader.gd" id="11_0x6dl"]
 [ext_resource type="Shader" uid="uid://byql5fnjre34e" path="res://escenes/shaders/Planet_BG.gdshader" id="12_0wuus"]
+[ext_resource type="Script" uid="uid://b8lslfllc88rv" path="res://escenes/InGame/minimapa.gd" id="13_63r62"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1mqh"]
 shader = ExtResource("9_ef1lg")
@@ -37,6 +38,7 @@ script = ExtResource("1_p6tvd")
 
 [node name="Camera2D" type="Camera2D" parent="Jugador/Nau" unique_id=2097000499]
 position = Vector2(-1, 1)
+position_smoothing_speed = 8.0
 script = ExtResource("8_qbbbo")
 
 [node name="GeneradorEnemics" type="Node2D" parent="." unique_id=599169271 groups=["generador"]]
@@ -64,7 +66,7 @@ grow_vertical = 2
 script = ExtResource("9_33fdg")
 drift = Vector2(-30, 7)
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1166781423 node_paths=PackedStringArray("starfield")]
+[node name="Planetari" type="Control" parent="CanvasLayer" unique_id=1166781423 node_paths=PackedStringArray("starfield")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -74,3 +76,20 @@ starfield = NodePath("../Background")
 planet_shader = ExtResource("12_0wuus")
 min_diameter = 100.0
 max_diameter = 300.0
+
+[node name="Minimapa" type="Control" parent="CanvasLayer" unique_id=1751866559 node_paths=PackedStringArray("jugador")]
+custom_minimum_size = Vector2(100, 75)
+clip_contents = true
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("13_63r62")
+jugador = NodePath("../../Jugador/Nau")

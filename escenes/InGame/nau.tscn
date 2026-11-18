@@ -252,7 +252,7 @@ _data = {
 
 [node name="Nau" type="CharacterBody2D" unique_id=1945557052]
 modulate = Color(1, 1, 1, 0)
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_vf3k4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=370048125]
@@ -296,6 +296,7 @@ texture = ExtResource("4_imjyb")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=843408251]
 unique_name_in_owner = true
+visible = false
 
 [node name="UI" type="Control" parent="." unique_id=449487577]
 layout_mode = 3

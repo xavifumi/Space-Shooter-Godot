@@ -46,10 +46,10 @@ func atac(delta: float)->void:
 	# --- SEPARACIÓ ENTRE ENEMICS ---
 	var separacio := Vector2.ZERO
 
-	for enemic in get_parent().get_children():
+	for enemic in get_tree().get_nodes_in_group("enemics"):
 
 		# Ignora a si mateix
-		if enemic == self:
+		if enemic == self :
 			continue
 
 		#var distancia = position.distance_to(enemic.position)
@@ -60,8 +60,9 @@ func atac(delta: float)->void:
 		if distancia < separacio_distancia and distancia > 0:
 
 			# Direcció oposada
-			var fugir = (position - enemic.position).normalized()
-
+			#var fugir = (position - enemic.position).normalized()
+			var fugir = -delta_enemic.normalized()
+			
 			# Com més a prop, més força
 			separacio += fugir * (separacio_distancia - distancia)
 
@@ -75,6 +76,7 @@ func atac(delta: float)->void:
 	velocity += steering * steering_factor * delta
 
 	#position += velocity * delta
+	move_and_slide()
 	position = Game.wrap_position(position)
 
 func _on_attack_cooldown_timeout() -> void:

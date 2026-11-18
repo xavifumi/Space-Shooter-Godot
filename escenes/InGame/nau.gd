@@ -26,6 +26,9 @@ var fx
 var colisio
 @onready var animation_player = $AnimationPlayer
 
+const CAPA_JUGADOR := 1
+const CAPA_ENEMICS := 2   
+
 
 func _ready() -> void: 
 	sprite = get_node("CollisionPolygon2D/Sprite2D")
@@ -48,77 +51,62 @@ func _ready() -> void:
 
 
 #ANCHOR: _process_definition
-func _process(delta: float) -> void:
-#END: _process_definition
-
+func _physics_process(delta: float) -> void:
 	movement(delta)
-	
-	var speed := velocity.length()
-	var fx_motor = get_node("Fx_motor")
-	var volume_db
-	#print(speed)
-	if speed > 5.0:  # llindar per evitar soroll quan quasi no es mou
-		if not fx_motor.playing:
-			fx_motor.play()
 
-		volume_db = remap(speed, 0.0, 200.0, -30.0, -15.0)
-		volume_db = clamp(volume_db, -30.0, -15.0)
-		fx_motor.volume_db = volume_db
-		
-		var pitch := remap(speed, 0.0, 300.0, 0.8, 1.5)
-		pitch = clamp(pitch, 0.8, 1.5)
-		fx_motor.pitch_scale = lerp(fx_motor.pitch_scale, pitch, 0.1)
-	else:
-		if fx_motor.playing:
-			fx_motor.stop()
-	$RichTextLabel.text = str(dash_reload.get_time_left())
-	if velocity.length() > 0.0:
-		#get_node("Fx_motor").set_volume_db(volume_db)
-		get_node("CollisionPolygon2D").rotation = velocity.angle()
-		get_node("CollisionPolygon2D/SpriteReactor").scale.y = wrapf(velocity.length()/50, 0, 0.7 )
-		get_node("CollisionPolygon2D/SpriteReactor").scale.x = wrapf(velocity.length()/50, 0, 0.5 )
-		#get_node("UI/RichTextLabel").text = str(steering * delta)
-
-	crosshair.rotation = get_local_mouse_position().angle() + PI/2
-	crosshair.get_node("Crosshair2").rotation = -crosshair.rotation
-	
-	#if dashing:
-	if dash_reload.is_stopped():
-		dash_bar.get_theme_stylebox("fill").set_bg_color(Color(0.10,0.64,0.92,1))
-
-	else:
-		dash_bar.get_theme_stylebox("fill").set_bg_color(Color(0.10,0.64,0.92,0.3))
-	dash_bar.value = dash_bar.max_value - dash_reload.get_time_left()*10
-	colisio = move_and_collide(velocity*delta)
+	colisio = move_and_collide(velocity * delta)
 	if colisio:
 		var colisionador = colisio.get_collider()
 		if colisionador is Enemic:
 			take_damage(1)
 
+	# Recolocar los objetos del mundo en su copia más cercana al jugador
+	for n in get_tree().get_nodes_in_group("wrappable"):
+		n.global_position = Game.nearest_copy(n.global_position, global_position)
+
+
+func _process(_delta: float) -> void:
+	var speed := velocity.length()
+	var fx_motor = get_node("Fx_motor")
+	var volume_db
+	if speed > 5.0:
+		if not fx_motor.playing:
+			fx_motor.play()
+		volume_db = clamp(remap(speed, 0.0, 200.0, -30.0, -15.0), -30.0, -15.0)
+		fx_motor.volume_db = volume_db
+		var pitch = clamp(remap(speed, 0.0, 300.0, 0.8, 1.5), 0.8, 1.5)
+		fx_motor.pitch_scale = lerp(fx_motor.pitch_scale, pitch, 0.1)
+	else:
+		if fx_motor.playing:
+			fx_motor.stop()
+
+	$RichTextLabel.text = str(dash_reload.get_time_left())
+
+	if velocity.length() > 0.0:
+		get_node("CollisionPolygon2D").rotation = velocity.angle()
+		get_node("CollisionPolygon2D/SpriteReactor").scale.y = wrapf(velocity.length()/50, 0, 0.7)
+		get_node("CollisionPolygon2D/SpriteReactor").scale.x = wrapf(velocity.length()/50, 0, 0.5)
+
+	crosshair.rotation = get_local_mouse_position().angle() + PI/2
+	crosshair.get_node("Crosshair2").rotation = -crosshair.rotation
+
+	if dash_reload.is_stopped():
+		dash_bar.get_theme_stylebox("fill").set_bg_color(Color(0.10,0.64,0.92,1))
+	else:
+		dash_bar.get_theme_stylebox("fill").set_bg_color(Color(0.10,0.64,0.92,0.3))
+	dash_bar.value = dash_bar.max_value - dash_reload.get_time_left()*10
+
 func movement(delta: float) -> void:
-	if pantalla == "A" or "C":
-		var direction := Vector2(0, 0)
-		direction.x = Input.get_axis("ui_left", "ui_right")
-		direction.y = Input.get_axis("ui_up", "ui_down")
+	var direction := Vector2(
+		Input.get_axis("ui_left", "ui_right"),
+		Input.get_axis("ui_up", "ui_down")
+	)
+	if direction.length() > 1.0:
+		direction = direction.normalized()
 
-		if direction.length() > 1.0:
-			direction = direction.normalized()
-
-		actual_speed = dash_speed if dashing  else max_speed
-
-		var desired_velocity := actual_speed * direction
-		var steering := desired_velocity - velocity
-		velocity += steering * steering_factor * delta
-		position += velocity * delta
-		
-		var viewport_size := get_viewport_rect().size
-		#position.x = wrapf(position.x, 0 - sprite.texture.get_width()/3, viewport_size.x + sprite.texture.get_width()/3)
-		#position.y = wrapf(position.y, 0 - sprite.texture.get_height()/3, viewport_size.y + sprite.texture.get_height()/3)
-		position.x = wrapf(position.x, 0.0, Game.WORLD_WIDTH)
-		position.y = wrapf(position.y, 0.0, Game.WORLD_HEIGHT)
-		
-	if pantalla == "B":
-		pass
+	actual_speed = dash_speed if dashing else max_speed
+	var desired_velocity := actual_speed * direction
+	velocity += (desired_velocity - velocity) * steering_factor * delta
 
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -129,6 +117,10 @@ func _input(event:InputEvent) -> void:
 		if event.keycode == KEY_SHIFT:
 			print(dash_reload.is_stopped())
 			dash()
+
+func _set_ghost(actiu: bool) -> void:
+	set_collision_mask_value(CAPA_ENEMICS, not actiu)
+	set_collision_layer_value(CAPA_JUGADOR, not actiu)
 
 func play_fx(stream_name : String, volume : int, from : float):
 	if fx.stream.get_path() != stream_name:
@@ -166,6 +158,7 @@ func take_damage(amount : int) -> void:
 		play_fx("res://fx/cop.wav", -15, 0.0)
 		$AnimationPlayer.play("Damage")
 		damaging = true
+		_set_ghost(true)
 		$Damage_time.start()
 		shake(0.001)
 		if health_bar :
@@ -203,3 +196,4 @@ func _on_dash_reload_timeout() -> void:
 func _on_damage_time_timeout() -> void:
 	$AnimationPlayer.play("idle")
 	damaging = false
+	_set_ghost(false) 
