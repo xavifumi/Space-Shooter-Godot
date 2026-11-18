@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cftrmqptfw2if" path="res://escenes/InGame/PlanetShader.gd" id="11_0x6dl"]
 [ext_resource type="Shader" uid="uid://byql5fnjre34e" path="res://escenes/shaders/Planet_BG.gdshader" id="12_0wuus"]
 [ext_resource type="Script" uid="uid://b8lslfllc88rv" path="res://escenes/InGame/minimapa.gd" id="13_63r62"]
+[ext_resource type="PackedScene" uid="uid://4gierthdavsy" path="res://escenes/InGame/pantalla_millores.tscn" id="14_n4oly"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1mqh"]
 shader = ExtResource("9_ef1lg")
@@ -93,3 +94,6 @@ grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("13_63r62")
 jugador = NodePath("../../Jugador/Nau")
+
+[node name="PantallaMillores" parent="." unique_id=1338690798 instance=ExtResource("14_n4oly")]
+visible = false

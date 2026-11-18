@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 GestorOnades="*uid://d4am2s4bd0urv"
 LoadingScreen="*uid://ct47oeqd68rqb"
 Game="*uid://wnoq44jwsqt"
+SistemaMillores="*uid://ddphpkt7ll3es"
 
 [display]
 

@@ -9,6 +9,7 @@ var actual_damage : int
 var angle_impacte
 var posicio_impacte
 
+var _vida_max_anterior := 10
 @export var health : int
 var health_bar
 var dash_bar
@@ -21,6 +22,7 @@ var reload
 var reloading := false
 var dashing := false
 var damaging := false
+var dead := false
 var pantalla
 var fx
 var colisio
@@ -43,6 +45,7 @@ func _ready() -> void:
 	dash_bar.max_value = get_node("DashReload").wait_time*10
 	dash_bar.value = dash_bar.max_value
 	dash_reload = get_node("DashReload")
+	SistemaMillores.canviat.connect(_recalcular_vida)
 	
 	#self.area_entered.connect(_on_area_entered)
 	_set_health(health)
@@ -97,16 +100,17 @@ func _process(_delta: float) -> void:
 	dash_bar.value = dash_bar.max_value - dash_reload.get_time_left()*10
 
 func movement(delta: float) -> void:
-	var direction := Vector2(
-		Input.get_axis("ui_left", "ui_right"),
-		Input.get_axis("ui_up", "ui_down")
-	)
-	if direction.length() > 1.0:
-		direction = direction.normalized()
+	if not dead:
+		var direction := Vector2(
+			Input.get_axis("ui_left", "ui_right"),
+			Input.get_axis("ui_up", "ui_down")
+		)
+		if direction.length() > 1.0:
+			direction = direction.normalized()
 
-	actual_speed = dash_speed if dashing else max_speed
-	var desired_velocity := actual_speed * direction
-	velocity += (desired_velocity - velocity) * steering_factor * delta
+		actual_speed = SistemaMillores.valor(&"max_speed", max_speed) if not dashing else dash_speed
+		var desired_velocity := actual_speed * direction
+		velocity += (desired_velocity - velocity) * steering_factor * delta
 
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -142,7 +146,7 @@ func dash():
 func shoot():
 	const BULLET = preload("res://escenes/InGame/bala.tscn")
 	var new_bullet = BULLET.instantiate()
-	new_bullet.DAMAGE = actual_damage
+	new_bullet.DAMAGE = roundi(SistemaMillores.valor(&"damage", 1))
 	new_bullet.position = self.position
 	new_bullet.rotation = crosshair.rotation
 	new_bullet.change_color(Color(1.0, 1.0, 1.0, 1.0))
@@ -150,7 +154,8 @@ func shoot():
 	add_sibling(new_bullet)
 	play_fx("res://fx/laser1.wav", -12, 0.0)
 	reloading = true
-	reload.start()
+	reload.start(SistemaMillores.valor(&"reload_time", reload_time))   # Timer.start() acepta el tiempo
+
 
 func take_damage(amount : int) -> void:
 	if $Damage_time.is_stopped():
@@ -176,6 +181,13 @@ func _set_health(new_value : int):
 		health_bar.value = health
 
 
+func _recalcular_vida() -> void:
+	var nova := roundi(SistemaMillores.valor(&"max_health", 10))
+	health += nova - _vida_max_anterior    # al subir el máximo, también te curas esa cantidad
+	_vida_max_anterior = nova
+	health_bar.max_value = nova
+	health_bar.value = health
+
 func _on_area_entered(area_that_entered: Area2D) -> void:
 	pass
 #	if area_that_entered.is_in_group("gem"):
@@ -187,7 +199,7 @@ func _on_reload_timeout() -> void:
 	reloading = false
 
 func _on_dash_timeout() -> void:
-	dash_reload.start()
+	dash_reload.start(SistemaMillores.valor(&"dash_cooldown", 3.0))    # tu wait_time base
 	dashing = false
 
 func _on_dash_reload_timeout() -> void:

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Millora" format=3 uid="uid://bj8a6vml0myq0"]
+
+[ext_resource type="Script" uid="uid://h82lh7344paj" path="res://escenes/millora.gd" id="1_kukhh"]
+
+[resource]
+script = ExtResource("1_kukhh")
+nom = "Refrigeració"
+descripcio = "Recàrrega
+Dash -20%"
+stat = &"dash_cooldown"
+multiplica = 0.8
+metadata/_custom_type_script = "uid://h82lh7344paj"

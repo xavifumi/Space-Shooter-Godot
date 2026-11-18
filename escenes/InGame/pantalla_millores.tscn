@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://4gierthdavsy"]
+
+[ext_resource type="Theme" uid="uid://bks4pnbxwx06n" path="res://escenes/InGame/TemaMenuPrincipal.tres" id="1_56ux3"]
+[ext_resource type="Script" uid="uid://rsg6q8hpe750" path="res://escenes/InGame/pantalla_millores.gd" id="1_dlhsl"]
+[ext_resource type="FontFile" uid="uid://bok3qcg6jmgnn" path="res://fonts/Crang.ttf" id="2_dlhsl"]
+
+[node name="PantallaMillores" type="CanvasLayer" unique_id=1338690798]
+process_mode = 3
+layer = 100
+script = ExtResource("1_dlhsl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=703457053]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.40392157)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=937470596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_56ux3")
+theme_override_colors/default_color = Color(7.70092e-07, 0.6724574, 0.9342233, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.54122525, 0.9585045, 1)
+theme_override_constants/line_separation = 10
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/normal_font = ExtResource("2_dlhsl")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "[center][wave amp=20.0 freq=4.0 connected=1][fade start=-5 length=40]
+Onada Superada[/fade][/wave]"
+
+[node name="Centre" type="CenterContainer" parent="." unique_id=587591601]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBox" type="HBoxContainer" parent="Centre" unique_id=1304050978]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="Centre/HBox" unique_id=759859431]
+custom_minimum_size = Vector2(110, 140)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+text = "Placeholder 1"
+
+[node name="Button2" type="Button" parent="Centre/HBox" unique_id=1606362489]
+custom_minimum_size = Vector2(110, 140)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+text = "Placeholder 1"
+
+[node name="Button3" type="Button" parent="Centre/HBox" unique_id=1594128527]
+custom_minimum_size = Vector2(110, 140)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+text = "Placeholder 1"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Millora" format=3 uid="uid://byssixemq8qm2"]
+
+[ext_resource type="Script" uid="uid://h82lh7344paj" path="res://escenes/millora.gd" id="1_hecnq"]
+
+[resource]
+script = ExtResource("1_hecnq")
+nom = "Cadència"
+descripcio = "Recàrega -15%"
+stat = &"reload_time"
+multiplica = 0.85
+metadata/_custom_type_script = "uid://h82lh7344paj"

@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bok3qcg6jmgnn" path="res://fonts/Crang.ttf" id="1_jdg5n"]
 [ext_resource type="Texture2D" uid="uid://ccr75b22mo3da" path="res://sprites/zx-spectrum-8x.png" id="2_ffhhd"]
 [ext_resource type="FontFile" uid="uid://dp5l83y6p2n52" path="res://fonts/Game-Font.ttf" id="3_2mo3w"]
+[ext_resource type="Theme" uid="uid://bks4pnbxwx06n" path="res://escenes/InGame/TemaMenuPrincipal.tres" id="3_waa0y"]
 [ext_resource type="PackedScene" uid="uid://bkpcenigritt0" path="res://escenes/bg_starfield.tscn" id="6_efcc2"]
 [ext_resource type="AudioStream" uid="uid://y20yqm814bmd" path="res://fx/442180__dylanthefish__ambient-space-3.mp3" id="6_rovqh"]
 [ext_resource type="AudioStream" uid="uid://by1enovm3g0pf" path="res://fx/167212__bliss__oxygenated-breathing-inside-space-helmet.mp3" id="7_waa0y"]
@@ -25,6 +26,7 @@ offset_left = 110.0
 offset_top = -22.0
 offset_right = 518.0
 offset_bottom = 254.0
+theme = ExtResource("3_waa0y")
 theme_override_colors/default_color = Color(1, 0, 1, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 0, 1)
 theme_override_constants/line_separation = 10

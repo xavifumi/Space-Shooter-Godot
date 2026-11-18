@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://jscl1thlg4do"]
 
-[ext_resource type="PackedScene" uid="uid://dmv50krf4bo5r" path="res://lessons_reference/05.ship_with_vfx/ship.tscn" id="1_ulw2b"]
-[ext_resource type="PackedScene" uid="uid://dgf54k70yiiff" path="res://assets/ship/main_thruster/main_thruster.tscn" id="2_wu1p7"]
-[ext_resource type="PackedScene" uid="uid://bklom8bhpxg4h" path="res://assets/ship/side_thruster/side_thruster.tscn" id="3_lmdfh"]
-[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_62ojo"]
+[ext_resource type="PackedScene" uid="uid://dmv50krf4bo5r" path="res://assets/ship.tscn" id="1_ulw2b"]
+[ext_resource type="PackedScene" path="res://assets/ship/main_thruster/main_thruster.tscn" id="2_wu1p7"]
+[ext_resource type="PackedScene" uid="uid://bklom8bhpxg4h" path="res://assets/side_thruster/side_thruster.tscn" id="3_lmdfh"]
+[ext_resource type="PackedScene" path="res://assets/background/space_background.tscn" id="4_62ojo"]
 
 [node name="SpaceLevel" type="Node2D"]
 
