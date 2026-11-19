@@ -77,7 +77,7 @@ func atac(delta: float)->void:
 
 	#position += velocity * delta
 	move_and_slide()
-	position = Game.wrap_position(position)
+	#position = Game.wrap_position(position)
 
 func _on_attack_cooldown_timeout() -> void:
 	pass

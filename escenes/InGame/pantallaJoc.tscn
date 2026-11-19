@@ -51,6 +51,7 @@ visible = false
 
 [node name="Musica" type="AudioStreamPlayer" parent="." unique_id=451494062]
 unique_name_in_owner = true
+process_mode = 3
 volume_db = -6.0
 autoplay = true
 

@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://bks4pnbxwx06n" path="res://escenes/InGame/TemaMenuPrincipal.tres" id="1_56ux3"]
 [ext_resource type="Script" uid="uid://rsg6q8hpe750" path="res://escenes/InGame/pantalla_millores.gd" id="1_dlhsl"]
 [ext_resource type="FontFile" uid="uid://bok3qcg6jmgnn" path="res://fonts/Crang.ttf" id="2_dlhsl"]
+[ext_resource type="Texture2D" uid="uid://dx03y7i6qv0ys" path="res://assets/icones/jetpack.png" id="4_4tvup"]
 
 [node name="PantallaMillores" type="CanvasLayer" unique_id=1338690798]
 process_mode = 3
@@ -54,15 +55,27 @@ custom_minimum_size = Vector2(110, 140)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 text = "Placeholder 1"
+icon = ExtResource("4_4tvup")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 
-[node name="Button2" type="Button" parent="Centre/HBox" unique_id=1606362489]
+[node name="Button2" type="Button" parent="Centre/HBox" unique_id=2137151628]
 custom_minimum_size = Vector2(110, 140)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 text = "Placeholder 1"
+icon = ExtResource("4_4tvup")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 
-[node name="Button3" type="Button" parent="Centre/HBox" unique_id=1594128527]
+[node name="Button3" type="Button" parent="Centre/HBox" unique_id=1127727978]
 custom_minimum_size = Vector2(110, 140)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 text = "Placeholder 1"
+icon = ExtResource("4_4tvup")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true

@@ -66,6 +66,7 @@ func enemy_killed():
 	print("Enemy Killed!")
 	print( "to spawn: "+ str(enemies_to_spawn) + " - alive: " + str(enemies_alive))
 	
+	print(SistemaMillores.triades)
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		wave_completed()
 

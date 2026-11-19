@@ -8,9 +8,12 @@ var triades := {}    # id -> nº de veces elegida
 
 func _ready() -> void:
 	for f in DirAccess.get_files_at(CARPETA):
-		var nom := f.trim_suffix(".remap")    # en el juego exportado los .tres aparecen como .tres.remap
+		var nom := f.trim_suffix(".remap")
 		if nom.ends_with(".tres"):
-			totes.append(load(CARPETA + nom))
+			var m: Millora = load(CARPETA + nom)
+			if m.id == &"":
+				m.id = StringName(nom.get_basename())   # "propulsores.tres" -> &"propulsores"
+			totes.append(m)
 
 func reset() -> void:
 	triades.clear()

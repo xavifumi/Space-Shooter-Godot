@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="Millora" format=3 uid="uid://byssixemq8qm2"]
 
+[ext_resource type="Texture2D" uid="uid://q5vrysduhk5n" path="res://assets/icones/reload-gun-barrel.png" id="1_bw4yl"]
 [ext_resource type="Script" uid="uid://h82lh7344paj" path="res://escenes/millora.gd" id="1_hecnq"]
 
 [resource]
 script = ExtResource("1_hecnq")
 nom = "Cadència"
 descripcio = "Recàrega -15%"
+icona = ExtResource("1_bw4yl")
 stat = &"reload_time"
 multiplica = 0.85
 metadata/_custom_type_script = "uid://h82lh7344paj"

@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="Millora" format=3 uid="uid://bw7xre7aqcyby"]
 
+[ext_resource type="Texture2D" uid="uid://c6raficfc7fnl" path="res://assets/icones/cannon-ball.png" id="1_7ab5o"]
 [ext_resource type="Script" uid="uid://h82lh7344paj" path="res://escenes/millora.gd" id="1_mtm6e"]
 
 [resource]
 script = ExtResource("1_mtm6e")
 nom = "Munició pesada"
 descripcio = "Dany +1"
+icona = ExtResource("1_7ab5o")
 stat = &"damage"
 suma = 1.0
 metadata/_custom_type_script = "uid://h82lh7344paj"
