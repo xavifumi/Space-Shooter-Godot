@@ -23,8 +23,9 @@ func _process(_delta: float) -> void:
 	
 	if health < 1:
 		$AttackCooldown.stop()
+		dropejar()
 		if $Grafic/Crack.visible == false:
-			$Grafic/Crack.start()
+			$Grafic/Crack.start($Grafic/Sprite2D.flip_h)
 		$Grafic/Crack.visible = true
 		#$Grafic/Sprite2D.visible = false
 		

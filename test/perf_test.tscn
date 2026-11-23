@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://perfstack001"]
+
+[ext_resource type="Script" uid="uid://fxwbfoygjn7s" path="res://test/perf_test.gd" id="1_perf"]
+
+[node name="PerfTest" type="Node2D" unique_id=449367729]
+script = ExtResource("1_perf")

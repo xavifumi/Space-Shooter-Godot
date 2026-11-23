@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Arma" format=3 uid="uid://bdgbltavodm3r"]
+
+[ext_resource type="Script" uid="uid://bymepvol33irp" path="res://assets/arma.gd" id="1_vcdk2"]
+
+[resource]
+script = ExtResource("1_vcdk2")
+nom = "base"
+color = Color(0.3691884, 0.81892174, 1, 1)
+metadata/_custom_type_script = "uid://bymepvol33irp"

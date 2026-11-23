@@ -10,6 +10,9 @@ var posicio_impacte : Vector2
 var death_deccel : float
 enum Estats {APARICIO,ATAC,MORT}
 @export var estat : Estats = Estats.APARICIO
+@export var taula_drops: TaulaDrops
+const PICKUP := preload("res://escenes/InGame/pickup.tscn")
+var _ha_dropejat := false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -82,6 +85,18 @@ func _set_health(new_value : int):
 	health = new_value
 	if health_bar :
 		health_bar.value = health
+
+func dropejar() -> void:
+	if _ha_dropejat or taula_drops == null:
+		return
+	_ha_dropejat = true
+	var p := taula_drops.triar()
+	if p == null:
+		return
+	var pk: Pickup = PICKUP.instantiate()
+	pk.configurar(p)
+	pk.position = position
+	add_sibling.call_deferred(pk)
 
 func death() -> void:
 	pass

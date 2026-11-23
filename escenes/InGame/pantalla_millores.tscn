@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://rsg6q8hpe750" path="res://escenes/InGame/pantalla_millores.gd" id="1_dlhsl"]
 [ext_resource type="FontFile" uid="uid://bok3qcg6jmgnn" path="res://fonts/Crang.ttf" id="2_dlhsl"]
 [ext_resource type="Texture2D" uid="uid://dx03y7i6qv0ys" path="res://assets/icones/jetpack.png" id="4_4tvup"]
+[ext_resource type="AudioStream" uid="uid://ciuemuqpwsiux" path="res://fx/747183__clif_creates__warp-sweep.mp3" id="5_dofgv"]
 
 [node name="PantallaMillores" type="CanvasLayer" unique_id=1338690798]
 process_mode = 3
@@ -79,3 +80,9 @@ icon = ExtResource("4_4tvup")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
+
+[node name="SoMillores" type="AudioStreamPlayer" parent="." unique_id=1167484159]
+process_mode = 2
+stream = ExtResource("5_dofgv")
+volume_db = -12.351
+autoplay = true

@@ -81,6 +81,7 @@ shader_parameter/sprite = SubResource("CompressedTexture2D_0dsya")
 shader_parameter/noise = SubResource("NoiseTexture2D_qajfe")
 shader_parameter/progress = 0.5
 shader_parameter/particle_lifetime_fraction = 0.3
+shader_parameter/flip_h = false
 
 [sub_resource type="Animation" id="Animation_aigf0"]
 resource_name = "Appear"
