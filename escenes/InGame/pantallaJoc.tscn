@@ -39,7 +39,8 @@ script = ExtResource("1_p6tvd")
 
 [node name="Camera2D" type="Camera2D" parent="Jugador/Nau" unique_id=2097000499]
 position = Vector2(-1, 1)
-position_smoothing_speed = 8.0
+process_callback = 0
+position_smoothing_speed = 0.0
 script = ExtResource("8_qbbbo")
 
 [node name="GeneradorEnemics" type="Node2D" parent="." unique_id=599169271 groups=["generador"]]

@@ -2,9 +2,17 @@
 
 [ext_resource type="Script" uid="uid://4nph5p7ua37u" path="res://escenes/InGame/enemic_00.gd" id="1_7846c"]
 [ext_resource type="Texture2D" uid="uid://e8abb375qo8p" path="res://sprites/Monstre000.png" id="2_0xsn1"]
+[ext_resource type="Script" uid="uid://qy5wr7mfram3" path="res://assets/powerup.gd" id="2_kj0yv"]
+[ext_resource type="Script" uid="uid://c608ck5micres" path="res://assets/taula_drops.gd" id="3_bnl8c"]
+[ext_resource type="Resource" uid="uid://b2atlvmos7kke" path="res://assets/powerups/cura_05.tres" id="3_puwor"]
 [ext_resource type="Shader" uid="uid://bdqiflni2rsc" path="res://escenes/shaders/shaders/crack.gdshader" id="3_wa8qw"]
 [ext_resource type="Texture2D" uid="uid://2o0hnrmt62u5" path="res://escenes/shaders/shaders/spreadnoise.png" id="4_wa8qw"]
 [ext_resource type="Script" uid="uid://d0fhhgp532ihc" path="res://escenes/shaders/disintegration.gd" id="5_kj0yv"]
+
+[sub_resource type="Resource" id="Resource_cdu06"]
+script = ExtResource("3_bnl8c")
+powerups = Array[ExtResource("2_kj0yv")]([ExtResource("3_puwor")])
+metadata/_custom_type_script = "uid://c608ck5micres"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i31cs"]
 radius = 12.0415945
@@ -271,6 +279,7 @@ alpha_curve = SubResource("CurveTexture_g1rja")
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_7846c")
+taula_drops = SubResource("Resource_cdu06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1077315193]
 shape = SubResource("CircleShape2D_i31cs")

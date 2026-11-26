@@ -10,3 +10,4 @@ enum Tipus { CURA, ARMA }
 @export var arma: Arma                  # si es ARMA
 @export var durada := 15.0              # segundos con el arma; 0 = permanente
 @export var color := Color.WHITE
+@export var so: AudioStream

@@ -12,6 +12,8 @@ var posicio_impacte
 var _vida_max_anterior := 10
 @export var health : int
 var health_bar
+var health_trail
+var _tween_vida: Tween
 var dash_bar
 var dash_reload
 var body_count := 0
@@ -45,10 +47,12 @@ var ear_base_r: Vector3
 
 
 func _ready() -> void:
-	sprite = get_node("CollisionPolygon2D/Sprite2D")
+	#sprite = get_node("CollisionPolygon2D/Sprite2D")
+	sprite = get_node("Fake3D")
 	reload = get_node("Reload")
 	crosshair = get_node("UI/Crosshair")
 	health_bar = get_node("UI/HealthBar")
+	health_trail = get_node("UI/HealthBarTrail")
 	fx = get_node("FX")
 	health = 10
 	health_bar.max_value = health
@@ -76,6 +80,10 @@ func _ready() -> void:
 	ear_base_r = ear_r.rotation
 	sprite.texture = $SubViewport.get_texture()   # no hace falta si ya la asignaste en el editor
 	ear_l.rotation.y = 1.0
+	
+	health_trail = get_node("UI/HealthBarTrail")
+	health_trail.max_value = health_bar.max_value
+	health_trail.value = health_bar.value
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
@@ -89,6 +97,8 @@ func _physics_process(delta: float) -> void:
 	# Recolocar los objetos del mundo en su copia más cercana al jugador
 	for n in get_tree().get_nodes_in_group("wrappable"):
 		n.global_position = Game.nearest_copy(n.global_position, global_position)
+	if not dead and not reloading and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		shoot()
 
 
 func _process(_delta: float) -> void:
@@ -153,7 +163,32 @@ func _actualitzar_nau_3d(delta: float) -> void:
 	ear_l.rotation.y = lerpf(ear_l.rotation.y, ear_base_l.y + yaw_l, k)
 	ear_r.rotation.y = lerpf(ear_r.rotation.y, ear_base_r.y + yaw_r, k)
 	
-	
+func _animar_barra(nou: float) -> void:
+	var anterior: float = health_bar.value
+	if _tween_vida:
+		_tween_vida.kill()
+	_tween_vida = create_tween()
+
+	if nou < anterior:
+		# DAÑO: la barra principal baja de golpe y la estela se vacía después
+		health_bar.value = nou
+		_tween_vida.tween_interval(0.4)
+		_tween_vida.tween_property(health_trail, "value", nou, 0.5) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	else:
+		# CURA: la estela salta al nuevo valor y la principal sube con tween
+		health_trail.value = nou
+		_tween_vida.tween_property(health_bar, "value", nou, 0.6) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func _fijar_barra(max_v: float, valor: float) -> void:
+	if _tween_vida:
+		_tween_vida.kill()
+	for b in [health_bar, health_trail]:
+		b.max_value = max_v
+		b.value = valor
+
+
 func movement(delta: float) -> void:
 	if not dead:
 		var direction := Vector2(
@@ -171,21 +206,24 @@ func movement(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if dead:
 		return
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if not reloading:
-				shoot()
+	#if event is InputEventMouseButton:
+	#	if event.button_index == MOUSE_BUTTON_LEFT:
+	#		if not reloading:
+	#			shoot()
 	if event is InputEventKey:
 		if event.keycode == KEY_SHIFT:
 			dash()
 
 
 func aplicar_powerup(p: Powerup) -> void:
+	if p.so:
+		$FxPickup.stream = p.so
+		$FxPickup.play()
 	match p.tipus:
 		Powerup.Tipus.CURA:
 			var max_vida := roundi(SistemaMillores.valor(&"max_health", 10))
 			health = mini(health + p.valor, max_vida)
-			health_bar.value = health
+			_animar_barra(health)
 		Powerup.Tipus.ARMA:
 			if p.arma == null:
 				return
@@ -233,12 +271,13 @@ func shoot():
 
 	const BULLET = preload("res://escenes/InGame/bala.tscn")
 	var n := arma.bales + roundi(SistemaMillores.valor(&"bales_extra", 0))
+	var angulo := get_local_mouse_position().angle() + PI / 2
 	for i in n:
 		var offset := 0.0 if n == 1 else lerpf(-arma.dispersio * 0.5, arma.dispersio * 0.5, float(i) / (n - 1))
 		var b = BULLET.instantiate()
 		b.DAMAGE = maxi(1, roundi(SistemaMillores.valor(&"damage", actual_damage) * arma.mult_dany))
 		b.position = position
-		b.rotation = crosshair.rotation + offset
+		b.rotation = angulo + offset
 		b.change_color(arma.color)
 		b.set_collision_mask_value(2, true)
 		add_sibling(b)
@@ -259,7 +298,7 @@ func take_damage(amount : int) -> void:
 		$Damage_time.start()
 		shake(0.001)
 		if health_bar:
-			health_bar.value = health
+			_animar_barra(health)
 
 
 func _on_hitbox_damage_taken(amount):
@@ -269,7 +308,7 @@ func _on_hitbox_damage_taken(amount):
 func _set_health(new_value : int):
 	health = new_value
 	if health_bar:
-		health_bar.value = health
+		_fijar_barra(health_bar.max_value, health)
 
 
 func _recalcular_vida() -> void:
@@ -277,7 +316,8 @@ func _recalcular_vida() -> void:
 	health += nova - _vida_max_anterior    # al subir el máximo, también te curas esa cantidad
 	_vida_max_anterior = nova
 	health_bar.max_value = nova
-	health_bar.value = health
+	health_trail.max_value = nova
+	_animar_barra(health)
 
 
 func _on_area_entered(_area_that_entered: Area2D) -> void:
