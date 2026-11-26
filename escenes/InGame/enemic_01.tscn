@@ -2,8 +2,16 @@
 
 [ext_resource type="Script" uid="uid://b84ity1fejw5a" path="res://escenes/InGame/enemic_01.gd" id="1_xoti7"]
 [ext_resource type="Shader" uid="uid://cnqf0rfy60ul6" path="res://escenes/shaders/shaders/burn.gdshader" id="2_0dsya"]
+[ext_resource type="Script" uid="uid://qy5wr7mfram3" path="res://assets/powerup.gd" id="2_b3xql"]
 [ext_resource type="Texture2D" uid="uid://talddyow3lvs" path="res://sprites/Monstre100.png" id="2_u0d5a"]
+[ext_resource type="Resource" uid="uid://b2atlvmos7kke" path="res://assets/powerups/cura_05.tres" id="3_5a2kj"]
+[ext_resource type="Script" uid="uid://c608ck5micres" path="res://assets/taula_drops.gd" id="4_ntaav"]
 [ext_resource type="Script" uid="uid://d0fhhgp532ihc" path="res://escenes/shaders/disintegration.gd" id="5_5a2kj"]
+
+[sub_resource type="Resource" id="Resource_s0spb"]
+script = ExtResource("4_ntaav")
+powerups = Array[ExtResource("2_b3xql")]([ExtResource("3_5a2kj")])
+metadata/_custom_type_script = "uid://c608ck5micres"
 
 [sub_resource type="Curve" id="Curve_3rcyg"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
@@ -81,6 +89,7 @@ shader_parameter/sprite = SubResource("CompressedTexture2D_0dsya")
 shader_parameter/noise = SubResource("NoiseTexture2D_qajfe")
 shader_parameter/progress = 0.5
 shader_parameter/particle_lifetime_fraction = 0.3
+shader_parameter/flip_h = false
 
 [sub_resource type="Animation" id="Animation_aigf0"]
 resource_name = "Appear"
@@ -274,6 +283,7 @@ alpha_curve = SubResource("CurveTexture_g1rja")
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_xoti7")
+taula_drops = SubResource("Resource_s0spb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1309075837]
 polygon = PackedVector2Array(-4, -9, -1, -7, 0, -6, 1, -9, 4, -11, 9, -11, 10, -7, 7, -2, -2, 10, -3, 10, -7, 6, -8, 2, -9, -1, -9, -7, -7, -8)

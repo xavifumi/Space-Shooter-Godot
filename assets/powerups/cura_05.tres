@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Powerup" format=3 uid="uid://b2atlvmos7kke"]
+
+[ext_resource type="Texture2D" uid="uid://ovwnhmvw8h1j" path="res://assets/powerups/pickup_heart_teal.png" id="1_p1y4p"]
+[ext_resource type="Script" uid="uid://qy5wr7mfram3" path="res://assets/powerup.gd" id="1_xubdh"]
+[ext_resource type="AudioStream" uid="uid://dwosir6hor4xk" path="res://fx/346116__lulyc__retro-game-heal-sound.mp3" id="3_s0spb"]
+
+[resource]
+script = ExtResource("1_xubdh")
+nom = "Cura_05"
+icona = ExtResource("1_p1y4p")
+valor = 3
+so = ExtResource("3_s0spb")
+metadata/_custom_type_script = "uid://qy5wr7mfram3"

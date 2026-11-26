@@ -2,12 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c8wwva3aqnbkg" path="res://escenes/InGame/nau.gd" id="1_vf3k4"]
 [ext_resource type="Texture2D" uid="uid://bf86rvkdi1l0x" path="res://sprites/ship.png" id="2_2opvx"]
+[ext_resource type="Resource" uid="uid://bdgbltavodm3r" path="res://assets/armes/base.tres" id="2_ohvxf"]
 [ext_resource type="Texture2D" uid="uid://s7jpd8vmiv86" path="res://sprites/effect_yellow.png" id="2_wmheb"]
 [ext_resource type="Texture2D" uid="uid://n4cyrtymxhvf" path="res://sprites/crosshairs_tilesheet_white.png" id="4_8exhv"]
 [ext_resource type="Texture2D" uid="uid://ccr75b22mo3da" path="res://sprites/zx-spectrum-8x.png" id="4_imjyb"]
+[ext_resource type="Texture2D" uid="uid://bttemjn7yruhn" path="res://sprites/explosio.png" id="5_85q66"]
 [ext_resource type="Texture2D" uid="uid://eqrcajcy53i" path="res://sprites/07.png" id="5_mocn2"]
 [ext_resource type="AudioStream" uid="uid://dtvwldauq5l4t" path="res://fx/spaceship_old.mp3" id="6_4wkiw"]
+[ext_resource type="PackedScene" uid="uid://b4nn0mlkdkp5o" path="res://assets/robot_mouse_head.glb" id="7_a7lse"]
 [ext_resource type="AudioStream" uid="uid://c42dxgc8dynsl" path="res://fx/87043__runnerpack__weapappear.wav" id="7_fbkt8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pp6ju"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Curve" id="Curve_yj7pf"]
 _data = [Vector2(0, 0.989011), 0.0, 0.0, 0, 0, Vector2(0.953333, 0.010989), -2.90886, 0.0, 0, 0]
@@ -49,13 +55,46 @@ alpha_curve = SubResource("CurveTexture_x2ymd")
 hue_variation_min = -0.14
 hue_variation_max = 0.05
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_66m1e"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fft3h"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.74
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.5
+scale_over_velocity_min = 0.19999999
+scale_over_velocity_max = 1.0
+hue_variation_min = -0.04000002
+hue_variation_max = 0.19999997
+anim_speed_min = 0.7
+anim_speed_max = 2.0
+
+[sub_resource type="Environment" id="Environment_a7lse"]
+ambient_light_source = 2
+ambient_light_color = Color(0.7058824, 0.7372549, 0.8117647, 1)
+ambient_light_energy = 0.8
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rvit"]
 atlas = ExtResource("5_mocn2")
 region = Rect2(0, 36, 16.3056, 8.50058)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7lse"]
+atlas = ExtResource("5_mocn2")
+region = Rect2(112.996, 52.99142, 14.364, 6.313)
+margin = Rect2(0, 0, 0.8, 0)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp5lm"]
 atlas = ExtResource("5_mocn2")
-region = Rect2(112.996, 69.0416, 14.3639, 6.36777)
+region = Rect2(112.996, 68.992, 14.364, 6.313)
 margin = Rect2(0, 0, 0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfbfe"]
@@ -77,14 +116,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:modulate")
+tracks/0/path = NodePath("Fake3D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.03333333, 0.33333334, 0.6666667, 1, 1.3333334),
 "transitions": PackedFloat32Array(0.5358867, 2.07053, 3.6050022, 2.07053, 1),
 "update": 0,
-"values": [Color(0, 0.847059, 0.847059, 1), Color(0.8324788, 0.20034349, 0.08727456, 1), Color(0, 0.847059, 0.847059, 1), Color(0.8324788, 0.20034349, 0.08727456, 1), Color(0, 0.847059, 0.847059, 1)]
+"values": [Color(0.6105727, 0.77699006, 0.8030762, 1), Color(0.8324788, 0.20034349, 0.08727456, 1), Color(0.5806092, 0.782442, 0.82232136, 1), Color(0.8324788, 0.20034349, 0.08727456, 1), Color(0.63307136, 0.7718121, 0.7929978, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_djkti"]
@@ -92,19 +131,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:scale")
+tracks/0/path = NodePath("Fake3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.508, 0.5)]
+"values": [Vector2(1.5, 1.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionPolygon2D/Sprite2D:position")
+tracks/1/path = NodePath("Fake3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +155,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionPolygon2D/Sprite2D:modulate")
+tracks/2/path = NodePath("Fake3D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -137,32 +176,71 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:amount_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ohvxf"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:amount_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fake3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.847059, 0.847059, 1), Color(0.34, 0.34, 0.34, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_pyhwt"]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:scale")
+tracks/0/path = NodePath("Fake3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.508, 0.5)]
+"values": [Vector2(1.5, 1.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionPolygon2D/Sprite2D:modulate")
+tracks/1/path = NodePath("Fake3D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(3.6050022),
 "update": 0,
-"values": [Color(0, 0.847059, 0.847059, 1)]
+"values": [Color(0.713204, 0.749896, 0.75942737, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -182,19 +260,19 @@ resource_name = "teleport_in"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionPolygon2D/Sprite2D:scale")
+tracks/0/path = NodePath("Fake3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.0666667, 0.366667, 0.5, 0.633333),
 "transitions": PackedFloat32Array(1.86607, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1.592, 0.525), Vector2(0.533, 0.524), Vector2(0.362, 0.505), Vector2(0.508, 0.5)]
+"values": [Vector2(2, 0.525), Vector2(2, 1.048), Vector2(0.724, 2), Vector2(1.5, 1.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionPolygon2D/Sprite2D:position")
+tracks/1/path = NodePath("Fake3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -206,14 +284,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionPolygon2D/Sprite2D:modulate")
+tracks/2/path = NodePath("Fake3D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.466667, 0.833333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0, 0.847059, 0.847059, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0.5985271, 0.7820263, 0.79213274, 1)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -246,14 +324,16 @@ tracks/4/keys = {
 _data = {
 &"Damage": SubResource("Animation_fbkt8"),
 &"RESET": SubResource("Animation_djkti"),
+&"death": SubResource("Animation_ohvxf"),
 &"idle": SubResource("Animation_pyhwt"),
 &"teleport_in": SubResource("Animation_7kmk8")
 }
 
 [node name="Nau" type="CharacterBody2D" unique_id=1945557052]
 modulate = Color(1, 1, 1, 0)
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_vf3k4")
+arma_base = ExtResource("2_ohvxf")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=370048125]
 visible = false
@@ -262,6 +342,14 @@ offset_top = -66.0
 offset_right = 73.0
 offset_bottom = -26.0
 text = "test"
+
+[node name="Fake3D" type="Sprite2D" parent="." unique_id=868791235]
+modulate = Color(0, 0.85, 0.85, 1)
+texture_filter = 1
+position = Vector2(0.857761, 0.20105)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("ViewportTexture_pp6ju")
+offset = Vector2(0, -3.34)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=780929495]
 unique_name_in_owner = true
@@ -284,9 +372,10 @@ lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_iy3co")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionPolygon2D" unique_id=319676165]
-modulate = Color(0, 0.85, 0.85, 1)
-position = Vector2(0.857761, 0.20105)
-scale = Vector2(0.508, 0.5)
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-250, 0.201)
+scale = Vector2(1.592, 0.525)
 texture = ExtResource("2_2opvx")
 
 [node name="Zx-spectrum-8x" type="Sprite2D" parent="CollisionPolygon2D" unique_id=121401855]
@@ -294,8 +383,46 @@ visible = false
 position = Vector2(-56.2194, 94.4919)
 texture = ExtResource("4_imjyb")
 
-[node name="HitBox" type="Area2D" parent="." unique_id=843408251]
-unique_name_in_owner = true
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1528632499]
+material = SubResource("CanvasItemMaterial_66m1e")
+position = Vector2(6.070968e-08, 7)
+rotation = -1.5708
+scale = Vector2(0.978316, 0.994792)
+amount_ratio = 0.0
+texture = ExtResource("5_85q66")
+process_material = SubResource("ParticleProcessMaterial_fft3h")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=662438534]
+transparent_bg = true
+size = Vector2i(32, 32)
+
+[node name="Pivot" type="Node3D" parent="SubViewport" unique_id=1985760555]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
+
+[node name="robot_mouse_head" parent="SubViewport/Pivot" unique_id=1124081802 instance=ExtResource("7_a7lse")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=422001156]
+transform = Transform3D(1, 0, 0, 0, 0.5449633, 0.8384599, 0, -0.8384599, 0.5449633, 0, 7.6895275, 4.8415914)
+environment = SubResource("Environment_a7lse")
+projection = 1
+fov = 20.0
+size = 2.5
+near = 0.1
+far = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=408681281]
+transform = Transform3D(0.877703, 0.0053201406, -0.47917542, 0.47920495, -0.009744273, 0.877649, -3.92106e-10, -0.99993837, -0.011102015, -2.806426, 5.204568, 0)
+light_energy = 0.8
+light_angular_distance = 10.7
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="SubViewport" unique_id=1859999345]
+transform = Transform3D(0.8852179, -0.005164399, 0.46514803, -0.4651767, -0.009827701, 0.88516355, -8.3840035e-10, -0.9999384, -0.011102016, 3.5441709, 5.204568, 0)
+light_energy = 0.2
+light_angular_distance = 10.7
+light_specular = 0.0
+light_bake_mode = 1
 
 [node name="UI" type="Control" parent="." unique_id=449487577]
 layout_mode = 3
@@ -311,7 +438,7 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="HealthBar" type="TextureProgressBar" parent="UI" unique_id=153467843]
+[node name="HealthBarTrail" type="TextureProgressBar" parent="UI" unique_id=355549706]
 texture_filter = 1
 layout_mode = 0
 offset_left = -15.0
@@ -325,6 +452,21 @@ stretch_margin_top = 2
 stretch_margin_right = 2
 stretch_margin_bottom = 2
 texture_under = SubResource("AtlasTexture_6rvit")
+texture_progress = SubResource("AtlasTexture_a7lse")
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI" unique_id=153467843]
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = 13.0
+offset_right = 15.0
+offset_bottom = 19.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
 texture_progress = SubResource("AtlasTexture_bp5lm")
 
 [node name="DashBar" type="ProgressBar" parent="UI" unique_id=973818127]
@@ -367,6 +509,8 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_uf5f1")
 autoplay = &"RESET"
 
+[node name="FxPickup" type="AudioStreamPlayer" parent="." unique_id=1892044982]
+
 [node name="FX" type="AudioStreamPlayer" parent="." unique_id=750747566]
 stream = ExtResource("7_fbkt8")
 volume_db = -6.5
@@ -395,3 +539,5 @@ one_shot = true
 [connection signal="timeout" from="Dash" to="." method="_on_dash_timeout"]
 [connection signal="timeout" from="DashReload" to="." method="_on_dash_reload_timeout"]
 [connection signal="timeout" from="Damage_time" to="." method="_on_damage_time_timeout"]
+
+[editable path="SubViewport/Pivot/robot_mouse_head"]

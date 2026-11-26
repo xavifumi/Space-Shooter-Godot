@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Millora" format=3 uid="uid://cmpiucm53wttb"]
+
+[ext_resource type="Script" uid="uid://h82lh7344paj" path="res://escenes/millora.gd" id="1_4xa15"]
+[ext_resource type="Texture2D" uid="uid://dp78horhyv0a0" path="res://assets/icones/rocket-thruster.png" id="1_kt37s"]
+
+[resource]
+script = ExtResource("1_4xa15")
+nom = "Propulsors"
+descripcio = "Velocitat +15%"
+icona = ExtResource("1_kt37s")
+stat = &"max_speed"
+multiplica = 1.15
+metadata/_custom_type_script = "uid://h82lh7344paj"

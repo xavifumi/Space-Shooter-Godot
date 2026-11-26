@@ -1,12 +1,12 @@
 shader_type canvas_item;
 
 uniform vec2 scroll = vec2(0.0);            // acumulado desde el script (píxeles)
-uniform int layers : hint_range(1, 8) = 4;
+uniform int layers : hint_range(1, 8) = 8;
 uniform float min_speed = 0.1;              // capa lejana (estrellas pequeñas)
 uniform float max_speed = 1.0;              // capa cercana (estrellas grandes)
-uniform float cell_far = 40.0;              // tamaño de celda en px (más pequeña = más densa)
-uniform float cell_near = 90.0;
-uniform float star_chance : hint_range(0.0, 1.0) = 0.5;  // % de celdas con estrella
+uniform float cell_far = 20.0;              // tamaño de celda en px (más pequeña = más densa)
+uniform float cell_near = 40.0;
+uniform float star_chance : hint_range(0.0, 1.0) = 0.8;  // % de celdas con estrella
 uniform float color_chance : hint_range(0.05, 0.10) = 0.08; // 5–10% de estrellas de color
 uniform float twinkle : hint_range(0.0, 1.0) = 0.3;
 uniform vec4 bg_color : source_color = vec4(0.0, 0.0, 0.02, 1.0);

@@ -37,7 +37,7 @@ func start_next_wave():
 	difficulty = 1.0 + (current_wave * 0.2)
 	
 	# Enemics per onada (exemple)
-	enemies_to_spawn = 2 + current_wave * 3
+	enemies_to_spawn = 10 + current_wave * 5
 	enemies_alive = 0
 	
 	spawning = true
@@ -66,6 +66,7 @@ func enemy_killed():
 	print("Enemy Killed!")
 	print( "to spawn: "+ str(enemies_to_spawn) + " - alive: " + str(enemies_alive))
 	
+	print(SistemaMillores.triades)
 	if enemies_alive <= 0 and enemies_to_spawn <= 0:
 		wave_completed()
 

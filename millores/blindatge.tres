@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Millora" format=3 uid="uid://bf8yjlsgyi2r4"]
+
+[ext_resource type="Texture2D" uid="uid://33olc6len1cm" path="res://assets/icones/bubble-field.png" id="1_bk8ak"]
+[ext_resource type="Script" uid="uid://h82lh7344paj" path="res://escenes/millora.gd" id="1_su1ia"]
+
+[resource]
+script = ExtResource("1_su1ia")
+nom = "Blindatge"
+descripcio = "Millora Vida +2"
+icona = ExtResource("1_bk8ak")
+stat = &"max health"
+suma = 2.0
+metadata/_custom_type_script = "uid://h82lh7344paj"

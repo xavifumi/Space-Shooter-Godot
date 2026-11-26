@@ -10,16 +10,20 @@
 [ext_resource type="Script" uid="uid://cxyt030g2ltot" path="res://escenes/InGame/camera.gd" id="8_qbbbo"]
 [ext_resource type="Script" uid="uid://d3f4038o30g0e" path="res://escenes/InGame/background.gd" id="9_33fdg"]
 [ext_resource type="Shader" uid="uid://dcf64re468rj5" path="res://shaders/BG_Starfield.gdshader" id="9_ef1lg"]
+[ext_resource type="Script" uid="uid://cftrmqptfw2if" path="res://escenes/InGame/PlanetShader.gd" id="11_0x6dl"]
+[ext_resource type="Shader" uid="uid://byql5fnjre34e" path="res://escenes/shaders/Planet_BG.gdshader" id="12_0wuus"]
+[ext_resource type="Script" uid="uid://b8lslfllc88rv" path="res://escenes/InGame/minimapa.gd" id="13_63r62"]
+[ext_resource type="PackedScene" uid="uid://4gierthdavsy" path="res://escenes/InGame/pantalla_millores.tscn" id="14_n4oly"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1mqh"]
 shader = ExtResource("9_ef1lg")
 shader_parameter/scroll = Vector2(0, 0)
-shader_parameter/layers = 4
+shader_parameter/layers = 5
 shader_parameter/min_speed = 0.1
 shader_parameter/max_speed = 1.0
-shader_parameter/cell_far = 40.0
-shader_parameter/cell_near = 90.0
-shader_parameter/star_chance = 0.5
+shader_parameter/cell_far = 30.0
+shader_parameter/cell_near = 50.0
+shader_parameter/star_chance = 0.6000000285
 shader_parameter/color_chance = 0.08
 shader_parameter/twinkle = 0.3
 shader_parameter/bg_color = Color(0, 0, 0.02, 1)
@@ -35,6 +39,8 @@ script = ExtResource("1_p6tvd")
 
 [node name="Camera2D" type="Camera2D" parent="Jugador/Nau" unique_id=2097000499]
 position = Vector2(-1, 1)
+process_callback = 0
+position_smoothing_speed = 0.0
 script = ExtResource("8_qbbbo")
 
 [node name="GeneradorEnemics" type="Node2D" parent="." unique_id=599169271 groups=["generador"]]
@@ -46,6 +52,7 @@ visible = false
 
 [node name="Musica" type="AudioStreamPlayer" parent="." unique_id=451494062]
 unique_name_in_owner = true
+process_mode = 3
 volume_db = -6.0
 autoplay = true
 
@@ -60,3 +67,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_33fdg")
+drift = Vector2(-30, 7)
+
+[node name="Planetari" type="Control" parent="CanvasLayer" unique_id=1166781423 node_paths=PackedStringArray("starfield")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_0x6dl")
+starfield = NodePath("../Background")
+planet_shader = ExtResource("12_0wuus")
+min_diameter = 100.0
+max_diameter = 300.0
+
+[node name="Minimapa" type="Control" parent="CanvasLayer" unique_id=1751866559 node_paths=PackedStringArray("jugador")]
+custom_minimum_size = Vector2(100, 75)
+clip_contents = true
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("13_63r62")
+jugador = NodePath("../../Jugador/Nau")
+
+[node name="PantallaMillores" parent="." unique_id=1338690798 instance=ExtResource("14_n4oly")]
+visible = false

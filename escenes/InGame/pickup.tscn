@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dakp1vdbll8xx"]
+
+[ext_resource type="Script" uid="uid://dws8wop60uu5i" path="res://escenes/InGame/pickup.gd" id="1_iqk3k"]
+[ext_resource type="Texture2D" uid="uid://ovwnhmvw8h1j" path="res://assets/powerups/pickup_heart_teal.png" id="2_b8oxn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6px8"]
+radius = 8.062258
+
+[node name="Pickup" type="Area2D" unique_id=1561771708]
+collision_layer = 16
+script = ExtResource("1_iqk3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=759138708]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_b8oxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=445634268]
+shape = SubResource("CircleShape2D_q6px8")

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dy5mkk4uu51p5"]
+
+[node name="SpriteStackDemo" type="Node2D" unique_id=1563118256]
+
+[node name="SpriteStack2D" type="Node2D" parent="." unique_id=1099647612]
+texture_filter = 1
+position = Vector2(576, 324)
+
+[node name="SpriteStack2D2" type="Node2D" parent="." unique_id=1180660649]
+texture_filter = 1

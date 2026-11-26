@@ -48,6 +48,7 @@ uniform sampler2D sprite;
 uniform sampler2D noise;
 uniform float progress : hint_range(0.0, 1.0, 0.01);
 uniform float particle_lifetime_fraction : hint_range(0.0, 1.0, 0.01);
+uniform bool flip_h = false;
 
 vec4 rotate_hue(vec4 current_color, float hue_rot_angle) {
 	float hue_rot_c = cos(hue_rot_angle);
@@ -247,7 +248,9 @@ void start() {
 		TRANSFORM[2].xyz = vec3(0.0, 0.0, 1.0);
 	}
 	if (RESTART_POSITION) {
-		TRANSFORM[3].xyz = vec3(float(starting_position.x), float(starting_position.y), 0.0);
+		ivec2 sprite_size = textureSize(sprite, 0);
+		float px = flip_h ? float(sprite_size.x - 1 - starting_position.x) : float(starting_position.x);
+		TRANSFORM[3].xyz = vec3(px, float(starting_position.y), 0.0);
 		TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
 	}
 	process_display_param(params, 0.0);
